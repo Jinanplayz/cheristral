@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+  <defs>
+    <radialGradient id="cherry-grad" cx="30%" cy="30%" r="70%">
+      <stop offset="0%" stop-color="#ff6b6b" />
+      <stop offset="35%" stop-color="#d40000" />
+      <stop offset="85%" stop-color="#730000" />
+      <stop offset="100%" stop-color="#330000" />
+    </radialGradient>
+  </defs>
+  
+  <!-- Stem -->
+  <path d="M 32 23 C 32 8, 46 4, 54 10" fill="none" stroke="#228b22" stroke-width="4" stroke-linecap="round" />
+  
+  <!-- Leaf -->
+  <path d="M 52 10 C 42 10, 38 18, 48 22 C 54 22, 58 14, 52 10 Z" fill="#32cd32" />
+  
+  <!-- Cherry Body -->
+  <circle cx="32" cy="42" r="20" fill="url(#cherry-grad)" />
+  
+  <!-- Primary Glossy Highlight -->
+  <ellipse cx="23" cy="33" rx="7" ry="3.5" transform="rotate(-35 23 33)" fill="#ffffff" opacity="0.75" />
+  
+  <!-- Small Secondary Highlight (Bounce light) -->
+  <circle cx="43" cy="53" r="2.5" fill="#ffffff" opacity="0.25" />
+</svg>
