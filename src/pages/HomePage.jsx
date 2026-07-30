@@ -8,6 +8,7 @@ import Footer from '@/components/Footer.jsx';
 import HeroSection from '@/components/HeroSection.jsx';
 import { Button } from '@/components/ui/button';
 import { Skeleton } from '@/components/ui/skeleton';
+import { heroes, cards } from '@/lib/images';
 
 // Lazy loaded heavy components
 const ProjectCard = lazy(() => import('@/components/ProjectCard.jsx'));
@@ -46,7 +47,7 @@ const HomePage = () => {
       rating: '5.0',
       releaseDate: '2026',
       tags: ['horror', 'psychological', 'action', 'adventure'],
-      image: 'https://images.unsplash.com/photo-1505635552518-3448ff116af3?auto=format&fit=crop&q=80'
+      image: cards.game01
     }, 
     {
       id: "upcoming-2",
@@ -56,7 +57,7 @@ const HomePage = () => {
       rating: '5.0',
       releaseDate: '2026',
       tags: ['horror', 'psychological', 'thriller', 'action'],
-      image: 'https://images.unsplash.com/photo-1698325653756-dcf62eca9fc1?auto=format&fit=crop&q=80'
+      image: cards.game03
     }
   ];
 
@@ -112,7 +113,7 @@ const HomePage = () => {
 
         <main className="flex-1">
           <HeroSection 
-            backgroundImage="https://images.unsplash.com/photo-1603810524593-4b55fa902ad6" 
+            backgroundImage={heroes.home} 
             title="REDEFINING INTERACTIVE EXPERIENCES" 
             subtitle="We develop highly sophisticated, immersive environments that redefine interactive entertainment, combining uncompromising quality with exceptional innovation." 
             ctaText="EXPLORE OUR WORK" 

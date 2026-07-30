@@ -8,6 +8,7 @@ import { Button } from '@/components/ui/button';
 const Header = memo(() => {
   const location = useLocation();
   const [isOpen, setIsOpen] = useState(false);
+  const [logoFailed, setLogoFailed] = useState(false);
 
   const navLinks = [
     { name: 'Home', path: '/' },
@@ -35,15 +36,22 @@ const Header = memo(() => {
           
           <Link to="/" className="flex items-center space-x-3 group min-h-[44px]">
             <div className="relative w-12 h-12 flex items-center justify-center transition-transform duration-300 group-hover:scale-105 group-hover:-rotate-3 rounded-xl overflow-hidden border border-primary/30 shadow-[0_0_10px_hsl(var(--primary)/0.2)] bg-black/50 will-change-transform">
-               <img 
-                 src="https://horizons-cdn.hostinger.com/ca6e0a90-1b3b-4730-865a-5a4f40a1da67/ea0338409f090f27c6edae3586f43e93.png" 
-                 alt="Cheristral Studio Logo"
-                 width="48"
-                 height="48"
-                 loading="eager"
-                 decoding="sync"
-                 className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110 will-change-transform"
-               />
+               {logoFailed ? (
+                 // Shows a "C" instead of a broken-image icon if
+                 // public/logo.png is missing.
+                 <span className="text-2xl font-black text-primary" aria-hidden="true">C</span>
+               ) : (
+                 <img
+                   src="/logo.png"
+                   alt="Cheristral Studio Logo"
+                   width="48"
+                   height="48"
+                   loading="eager"
+                   decoding="sync"
+                   onError={() => setLogoFailed(true)}
+                   className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110 will-change-transform"
+                 />
+               )}
             </div>
             <span className="text-xl md:text-2xl font-black uppercase tracking-[0.1em] text-glow transition-colors duration-300 group-hover:text-primary hidden sm:block">
               Cheristral Studio

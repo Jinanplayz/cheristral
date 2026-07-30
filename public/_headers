@@ -2,6 +2,16 @@
 /assets/*
   Cache-Control: public, max-age=31536000, immutable
 
+# Images. Filenames are stable rather than content-hashed, so these cannot be
+# "immutable" like /assets/ is. One day of caching, and up to a week of serving
+# the stale copy while a fresh one downloads in the background. If you replace an
+# image, returning visitors see the new one within a day.
+/images/*
+  Cache-Control: public, max-age=86400, stale-while-revalidate=604800
+
+/logo.png
+  Cache-Control: public, max-age=86400, stale-while-revalidate=604800
+
 # Never cache the service worker so updates roll out immediately
 /sw.js
   Cache-Control: public, max-age=0, must-revalidate

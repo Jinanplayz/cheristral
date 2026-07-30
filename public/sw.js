@@ -1,5 +1,7 @@
 // Bump this version on each deploy to invalidate old caches.
-const CACHE_NAME = 'cheristral-cache-v2';
+// v3: images moved from Unsplash to self-hosted /images/, so the old
+// multi-megabyte cached copies need to be evicted.
+const CACHE_NAME = 'cheristral-cache-v3';
 
 // Only precache the app shell. (manifest.json was removed — it never existed and
 // caused the install step to reject.)

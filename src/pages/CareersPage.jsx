@@ -6,6 +6,7 @@ import Header from '@/components/Header.jsx';
 import Footer from '@/components/Footer.jsx';
 import HeroSection from '@/components/HeroSection.jsx';
 import { Skeleton } from '@/components/ui/skeleton';
+import { heroes } from '@/lib/images';
 
 const JobCard = lazy(() => import('@/components/JobCard.jsx'));
 
@@ -73,7 +74,7 @@ const CareersPage = () => {
 
         <main className="flex-1">
           <HeroSection
-            backgroundImage="https://images.unsplash.com/photo-1672754091891-b58ed53665e6?auto=format&fit=crop&q=80"
+            backgroundImage={heroes.careers}
             title="CAREERS"
             subtitle="We are continuously seeking exceptional talent to join our studio. Whether you are an industry veteran or an emerging professional, discover your next opportunity with us."
           />

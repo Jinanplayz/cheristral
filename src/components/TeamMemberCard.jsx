@@ -2,14 +2,10 @@
 import React, { memo } from 'react';
 import { motion, useReducedMotion } from 'framer-motion';
 
-const getOptimizedPhoto = (url) => {
-  if (!url || !url.includes('unsplash.com')) return url;
-  return `${url}&fm=webp&w=400&q=80`;
-};
 
 const TeamMemberCard = memo(({ photo, name, position, description }) => {
   const shouldReduceMotion = useReducedMotion();
-  const optimizedPhoto = getOptimizedPhoto(photo);
+  const optimizedPhoto = photo;
 
   return (
     <motion.div
@@ -25,8 +21,10 @@ const TeamMemberCard = memo(({ photo, name, position, description }) => {
         <div className="absolute inset-2 overflow-hidden rounded-full bg-muted shadow-inner">
           {optimizedPhoto ? (
             <img 
-              src={optimizedPhoto} 
-              alt={name} 
+              src={optimizedPhoto}
+              width="112"
+              height="112"
+              alt={name}
               loading="lazy"
               decoding="async"
               className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500 will-change-transform" 

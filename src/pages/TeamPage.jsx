@@ -6,6 +6,7 @@ import Header from '@/components/Header.jsx';
 import Footer from '@/components/Footer.jsx';
 import HeroSection from '@/components/HeroSection.jsx';
 import { Skeleton } from '@/components/ui/skeleton';
+import { heroes } from '@/lib/images';
 
 const TeamMemberCard = lazy(() => import('@/components/TeamMemberCard.jsx'));
 
@@ -55,7 +56,7 @@ const TeamPage = () => {
 
         <main className="flex-1">
           <HeroSection
-            backgroundImage="https://images.unsplash.com/photo-1683496865103-263bd91872b6?auto=format&fit=crop&q=80"
+            backgroundImage={heroes.team}
             title="OUR STUDIO"
             subtitle="An assembly of exceptional talent dedicated to advancing the medium of interactive storytelling."
           />

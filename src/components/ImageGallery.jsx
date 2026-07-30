@@ -42,7 +42,7 @@ const ImageGallery = memo(({ images }) => {
             aria-label={`View full image ${index + 1}`}
           >
             <img 
-              src={img.includes('unsplash.com') ? `${img}&fm=webp&w=400` : img} 
+              src={img} 
               alt={`Gallery screenshot ${index + 1}`} 
               loading="lazy"
               decoding="async"
@@ -101,7 +101,7 @@ const ImageGallery = memo(({ images }) => {
               className="relative w-full max-w-6xl max-h-[90vh] px-16 flex items-center justify-center pointer-events-none will-change-transform gpu-accelerated"
             >
               <img
-                src={images[currentIndex].includes('unsplash.com') ? `${images[currentIndex]}&fm=webp&w=1600` : images[currentIndex]}
+                src={images[currentIndex]}
                 alt={`Screenshot ${currentIndex + 1}`}
                 loading="lazy"
                 decoding="async"

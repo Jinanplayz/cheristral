@@ -6,13 +6,11 @@ import Header from '@/components/Header.jsx';
 import Footer from '@/components/Footer.jsx';
 import HeroSection from '@/components/HeroSection.jsx';
 import { Skeleton } from '@/components/ui/skeleton';
-import { useImagePreload } from '@/hooks/useImagePreload.js';
+import { heroes, cards } from '@/lib/images';
 
 const ProjectCard = lazy(() => import('@/components/ProjectCard.jsx'));
 
 const ProjectsPage = () => {
-  const bgUrl = "https://images.unsplash.com/photo-1550745165-9bc0b252726f?auto=format&fit=crop&q=80";
-  const isBgLoaded = useImagePreload(bgUrl);
 
   const projects = [
     {
@@ -23,7 +21,7 @@ const ProjectsPage = () => {
       rating: '5.0',
       releaseDate: '2026',
       tags: ['horror', 'psychological', 'action', 'adventure'],
-      image: 'https://images.unsplash.com/photo-1629867578529-7f5a9f984c78'
+      image: cards.game04
     }, 
     {
       id: "upcoming-2",
@@ -33,7 +31,7 @@ const ProjectsPage = () => {
       rating: '5.0',
       releaseDate: '2026',
       tags: ['horror', 'psychological', 'thriller', 'action'],
-      image: 'https://images.unsplash.com/photo-1605806616949-1e87b487cb2a?auto=format&fit=crop&q=80'
+      image: cards.game02
     }
   ];
 
@@ -49,16 +47,22 @@ const ProjectsPage = () => {
 
         <main className="flex-1">
           <HeroSection
-            backgroundImage="https://images.unsplash.com/photo-1519241047957-be31d7379a5d?auto=format&fit=crop&q=80"
+            backgroundImage={heroes.projects}
             title="OUR PORTFOLIO"
             subtitle="A distinguished collection of interactive experiences that push the boundaries of modern gaming across multiple platforms."
           />
 
           <section className="py-32 relative">
             {/* Stable Background Container */}
-            <div 
-              className={`absolute inset-0 bg-image-stable opacity-5 mix-blend-screen pointer-events-none ${!isBgLoaded ? 'bg-[hsl(var(--image-placeholder-bg))]' : ''}`}
-              style={isBgLoaded ? { backgroundImage: `url(${bgUrl})` } : {}}
+            {/* Faint texture at 5% opacity. Lazy-loaded, so it costs nothing
+                up front and needs no JavaScript to appear. */}
+            <img
+              src={heroes.texture}
+              alt=""
+              aria-hidden="true"
+              loading="lazy"
+              decoding="async"
+              className="absolute inset-0 w-full h-full object-cover object-center opacity-5 mix-blend-screen pointer-events-none"
             />
             <div className="absolute inset-0 bg-gradient-to-b from-background via-background/95 to-background pointer-events-none" />
 

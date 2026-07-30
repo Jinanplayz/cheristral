@@ -117,13 +117,6 @@
     perspective: 1000px;
   }
   
-  .bg-image-stable {
-    background-attachment: fixed;
-    background-size: cover;
-    background-position: center;
-    transition: none !important;
-    animation: none !important;
-  }
 
   .image-placeholder {
     background-color: hsl(var(--muted));

@@ -1,16 +1,25 @@
-
+/* eslint-disable react/no-unknown-property --
+   fetchpriority must be lowercase: react-dom 18 does not know the camelCase
+   version and silently drops it. */
 import React, { memo } from 'react';
 import { Link } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
 import { motion, useReducedMotion } from 'framer-motion';
-import { useImagePreload } from '@/hooks/useImagePreload.js';
+import { heroes } from '@/lib/images';
 
-const HeroSection = memo(({ backgroundImage, title, subtitle, ctaText, ctaLink, superTitle = "CHERISTRAL STUDIO" }) => {
+const HeroSection = memo(({
+  backgroundImage,
+  title,
+  subtitle,
+  ctaText,
+  ctaLink,
+  superTitle = "CHERISTRAL STUDIO",
+  // Set priority on the first hero of a page so the browser fetches it
+  // immediately instead of treating it as a lazy, low-priority image.
+  priority = false,
+}) => {
   const shouldReduceMotion = useReducedMotion();
-  const fallbackImage = "https://images.unsplash.com/photo-1683496865103-263bd91872b6";
-  
-  // Use preloader hook for the background
-  const isLoaded = useImagePreload(backgroundImage || fallbackImage);
+  const src = backgroundImage || heroes.team;
 
   const animationProps = {
     initial: shouldReduceMotion ? { opacity: 1 } : { opacity: 0, y: 15 },
@@ -20,16 +29,26 @@ const HeroSection = memo(({ backgroundImage, title, subtitle, ctaText, ctaLink, 
 
   return (
     <section className="relative min-h-[100dvh] flex items-center justify-center overflow-hidden gpu-accelerated">
-      {/* Stable Background Container */}
-      <div 
-        className={`absolute inset-0 z-0 bg-image-stable ${!isLoaded ? 'bg-[hsl(var(--image-placeholder-bg))]' : ''}`}
-        style={isLoaded ? { backgroundImage: `url(${backgroundImage || fallbackImage})` } : {}}
+      {/*
+        A real <img>, not a CSS background applied by JavaScript.
+        The old version waited for the JS bundle to load, React to mount, and an
+        effect to run before the image request even started. This version is
+        visible to the browser as soon as the markup exists.
+      */}
+      <img
+        src={src}
+        alt=""
+        aria-hidden="true"
+        fetchpriority={priority ? 'high' : 'auto'}
+        loading={priority ? 'eager' : 'lazy'}
+        decoding="async"
+        className="absolute inset-0 z-0 w-full h-full object-cover object-center bg-[hsl(var(--image-placeholder-bg))]"
       />
       <div className="absolute inset-0 bg-gradient-to-b from-background/90 via-background/60 to-background z-0" />
 
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="max-w-4xl mx-auto text-center flex flex-col items-center">
-          
+
           {superTitle && (
             <motion.h2
               {...animationProps}
@@ -50,7 +69,7 @@ const HeroSection = memo(({ backgroundImage, title, subtitle, ctaText, ctaLink, 
           >
             {title}
           </motion.h1>
-          
+
           {subtitle && (
             <motion.p
               {...animationProps}
@@ -60,7 +79,7 @@ const HeroSection = memo(({ backgroundImage, title, subtitle, ctaText, ctaLink, 
               {subtitle}
             </motion.p>
           )}
-          
+
           {ctaText && ctaLink && (
             <motion.div
               {...animationProps}

@@ -4,9 +4,10 @@ import { Link } from 'react-router-dom';
 import { Download, Star, Calendar } from 'lucide-react';
 import { motion, useReducedMotion } from 'framer-motion';
 import { Badge } from '@/components/ui/badge';
+import { cards } from '@/lib/images';
 
 const ProjectCard = memo(({ id = "1", title, image, downloads, rating, releaseDate, description, tags }) => {
-  const fallbackImage = "https://images.unsplash.com/photo-1549500379-1938ee1fc6a8";
+  const fallbackImage = cards.fallback;
   const [imgSrc, setImgSrc] = useState(image);
   const [isLoaded, setIsLoaded] = useState(false);
   const [hasError, setHasError] = useState(false);
@@ -19,11 +20,6 @@ const ProjectCard = memo(({ id = "1", title, image, downloads, rating, releaseDa
     }
   };
 
-  const getSrcSet = (url) => {
-    if (!url || !url.includes('unsplash.com')) return undefined;
-    const base = url.split('?')[0];
-    return `${base}?auto=format&fit=crop&fm=webp&w=300&q=80 300w, ${base}?auto=format&fit=crop&fm=webp&w=500&q=80 500w, ${base}?auto=format&fit=crop&fm=webp&w=800&q=80 800w`;
-  };
 
   return (
     <Link to={`/projects/${id}`} className="block h-full outline-none focus-visible:ring-2 focus-visible:ring-primary rounded-2xl">
@@ -40,8 +36,6 @@ const ProjectCard = memo(({ id = "1", title, image, downloads, rating, releaseDa
         <div className="relative h-64 bg-muted overflow-hidden border-b border-border/50 group-hover:border-primary/50 transition-colors image-placeholder">
           <img 
             src={imgSrc}
-            srcSet={getSrcSet(imgSrc)}
-            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
             alt={`Screenshot of ${title} game project`} 
             loading="lazy"
             decoding="async"

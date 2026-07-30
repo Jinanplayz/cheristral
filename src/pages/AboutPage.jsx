@@ -7,11 +7,9 @@ import Footer from '@/components/Footer.jsx';
 import HeroSection from '@/components/HeroSection.jsx';
 import ContactForm from '@/components/ContactForm.jsx';
 import { Target, Users, Zap, ShieldAlert } from 'lucide-react';
-import { useImagePreload } from '@/hooks/useImagePreload.js';
+import { heroes } from '@/lib/images';
 
 const AboutPage = () => {
-  const bgUrl = "https://images.unsplash.com/photo-1550745165-9bc0b252726f?auto=format&fit=crop&q=80";
-  const isBgLoaded = useImagePreload(bgUrl);
 
   const values = [{
     icon: Target,
@@ -58,7 +56,7 @@ const AboutPage = () => {
 
         <main className="flex-1">
           <HeroSection 
-            backgroundImage="https://images.unsplash.com/photo-1589241062313-35890684416a?auto=format&fit=crop&q=80" 
+            backgroundImage={heroes.about} 
             title="OUR STUDIO" 
             subtitle="Architecting the future of interactive entertainment through distinguished design and technical excellence." 
           />
@@ -168,9 +166,15 @@ const AboutPage = () => {
           {/* Contact Section */}
           <section className="py-32 relative overflow-hidden">
             {/* Stable Background Container */}
-            <div 
-              className={`absolute inset-0 bg-image-stable opacity-5 mix-blend-screen pointer-events-none ${!isBgLoaded ? 'bg-[hsl(var(--image-placeholder-bg))]' : ''}`}
-              style={isBgLoaded ? { backgroundImage: `url(${bgUrl})` } : {}}
+            {/* Faint texture at 5% opacity. Lazy-loaded, so it costs nothing
+                up front and needs no JavaScript to appear. */}
+            <img
+              src={heroes.texture}
+              alt=""
+              aria-hidden="true"
+              loading="lazy"
+              decoding="async"
+              className="absolute inset-0 w-full h-full object-cover object-center opacity-5 mix-blend-screen pointer-events-none"
             />
             <div className="absolute inset-0 bg-gradient-to-b from-background via-background/95 to-background pointer-events-none" />
             
