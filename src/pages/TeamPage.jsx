@@ -1,6 +1,6 @@
 
 import React, { Suspense, lazy } from 'react';
-import { Helmet } from 'react-helmet';
+import PageMeta from '@/components/PageMeta.jsx';
 import { motion } from 'framer-motion';
 import Header from '@/components/Header.jsx';
 import Footer from '@/components/Footer.jsx';
@@ -46,10 +46,7 @@ const TeamPage = () => {
 
   return (
     <>
-      <Helmet>
-        <title>Our Studio - Cheristral Studio</title>
-        <meta name="description" content="Meet the exceptional talent behind Cheristral Studio's acclaimed interactive experiences." />
-      </Helmet>
+      <PageMeta title="Our Studio - Cheristral Studio" description="Meet the exceptional talent behind Cheristral Studio's acclaimed interactive experiences." />
 
       <div className="min-h-screen flex flex-col bg-background">
         <Header />

@@ -22,23 +22,26 @@ const DEST_DIR = join(ROOT, 'public', 'images');
 const force = process.argv.includes('--force');
 const exists = (p) => access(p).then(() => true, () => false);
 
-async function download({ file, width, unsplash }) {
+async function download({ file, w, h, unsplash }) {
   const dest = join(DEST_DIR, file);
 
   if (!force && (await exists(dest))) {
     return `skipped, already there`;
   }
 
+  // Ask for the exact dimensions we render at. Without &h= Unsplash returns the
+  // photo's own aspect ratio, which for portrait photos means most of the pixels
+  // get cropped away and thrown out by the browser.
   const url =
     `https://images.unsplash.com/${unsplash}` +
-    `?w=${width}&q=75&fm=webp&fit=crop&auto=format`;
+    `?w=${w}&h=${h}&q=75&fm=webp&fit=crop&crop=entropy&auto=format`;
 
   const res = await fetch(url);
   if (!res.ok) throw new Error(`HTTP ${res.status}`);
 
   const bytes = Buffer.from(await res.arrayBuffer());
   await writeFile(dest, bytes);
-  return `${width}px, ${Math.round(bytes.length / 1024)} KB`;
+  return `${w}x${h}, ${Math.round(bytes.length / 1024)} KB`;
 }
 
 await mkdir(DEST_DIR, { recursive: true });
@@ -74,7 +77,8 @@ for (const item of IMAGE_MANIFEST) {
 }
 
 if (missing.length === 0) {
-  console.log(`\nAll ${IMAGE_MANIFEST.length} images are in public/images/. Nothing missing.\n`);
+  console.log(`\nAll ${IMAGE_MANIFEST.length} images are in public/images/.`);
+  console.log(`Next, shrink them: npm run optimize\n`);
   process.exit(0);
 }
 

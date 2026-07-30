@@ -1,4 +1,6 @@
-import { onCLS, onFID, onLCP, onTTFB, onFCP } from 'web-vitals';
+// onFID was removed from web-vitals v4: Google replaced First Input Delay with
+// Interaction to Next Paint (INP) in March 2024.
+import { onCLS, onINP, onLCP, onTTFB, onFCP } from 'web-vitals';
 
 function sendToAnalytics(metric) {
   const body = JSON.stringify(metric);
@@ -13,7 +15,7 @@ function sendToAnalytics(metric) {
 
 export function initPerformanceMonitoring() {
   onCLS(sendToAnalytics);
-  onFID(sendToAnalytics);
+  onINP(sendToAnalytics);
   onLCP(sendToAnalytics);
   onTTFB(sendToAnalytics);
   onFCP(sendToAnalytics);

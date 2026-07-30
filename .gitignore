@@ -1,5 +1,8 @@
 node_modules/
 dist/
+
+# Backups made by `npm run optimize`. Safe to delete.
+public/images/.original/
 .vite/
 
 # The images in public/images/ ARE committed. That is the point of self-hosting.

@@ -1,7 +1,7 @@
 
 import React from 'react';
+import PageMeta from '@/components/PageMeta.jsx';
 import { useParams, Link, Navigate } from 'react-router-dom';
-import { Helmet } from 'react-helmet';
 import { motion } from 'framer-motion';
 import { ArrowLeft, Briefcase, MapPin, Clock, CheckCircle2, DollarSign, ArrowUpRight, HeartPulse, ShieldCheck, Zap, Gamepad2, Users, Sparkles } from 'lucide-react';
 import Header from '@/components/Header.jsx';
@@ -183,9 +183,10 @@ const JobDetailPage = () => {
 
   return (
     <>
-      <Helmet>
-        <title>{job.title} - Careers | Cheristral Studio</title>
-      </Helmet>
+      <PageMeta
+          title={`${job.title} - Careers | Cheristral Studio`}
+          description={`${job.title} at Cheristral Studio. ${job.location ?? ''} ${job.type ?? ''}`.trim()}
+        />
 
       <div className="min-h-screen flex flex-col bg-background">
         <Header />

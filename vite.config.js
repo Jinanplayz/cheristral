@@ -28,6 +28,10 @@ export default defineConfig({
           'react-vendor': ['react', 'react-dom', 'react-router-dom'],
           'motion': ['framer-motion'],
           'icons': ['lucide-react'],
+          // Radix Dialog powers the mobile nav drawer. Without naming it, Rollup
+          // folded ~40 KB of it into a chunk it happened to call "Footer", which
+          // meant any Footer edit invalidated the Radix cache too.
+          'ui-vendor': ['@radix-ui/react-dialog', '@radix-ui/react-slot'],
         },
       },
     },

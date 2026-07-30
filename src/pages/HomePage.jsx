@@ -1,6 +1,6 @@
 
 import React, { useEffect, useState, useRef, lazy, Suspense } from 'react';
-import { Helmet } from 'react-helmet';
+import PageMeta from '@/components/PageMeta.jsx';
 import { Link } from 'react-router-dom';
 import { motion, useInView } from 'framer-motion';
 import Header from '@/components/Header.jsx';
@@ -103,10 +103,7 @@ const HomePage = () => {
 
   return (
     <>
-      <Helmet>
-        <title>Cheristral Studio - Next-Gen Gaming Experiences</title>
-        <meta name="description" content="Cheristral Studio creates sophisticated interactive games that push the boundaries of entertainment." />
-      </Helmet>
+      <PageMeta title="Cheristral Studio - Next-Gen Gaming Experiences" description="Cheristral Studio creates sophisticated interactive games that push the boundaries of entertainment." />
 
       <div className="min-h-screen flex flex-col bg-background">
         <Header />

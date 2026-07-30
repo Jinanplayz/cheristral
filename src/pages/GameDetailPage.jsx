@@ -2,8 +2,8 @@
 /* eslint-disable react/no-unknown-property --
    fetchpriority must be lowercase for react-dom 18. */
 import React from 'react';
+import PageMeta from '@/components/PageMeta.jsx';
 import { useParams, Link } from 'react-router-dom';
-import { Helmet } from 'react-helmet';
 import { motion } from 'framer-motion';
 import { ArrowLeft, Monitor, Gamepad2, Download, Star, Users, Globe, Settings, Terminal, Shield, Tags } from 'lucide-react';
 import Header from '@/components/Header.jsx';
@@ -79,10 +79,7 @@ const GameDetailPage = () => {
 
   return (
     <>
-      <Helmet>
-        <title>{game.title} - Cheristral Studio</title>
-        <meta name="description" content={game.description} />
-      </Helmet>
+      <PageMeta title={`${game.title} - Cheristral Studio`} description={game.description} image={game.coverImage} />
 
       <div className="min-h-screen flex flex-col bg-background">
         <Header />

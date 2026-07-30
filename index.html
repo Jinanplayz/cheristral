@@ -18,22 +18,57 @@
     -->
     <link rel="preload" as="image" href="/images/hero-home.webp" fetchpriority="high" />
 
-    <!-- Load fonts once, non-render-blocking, with a noscript fallback -->
+    <!--
+      Load fonts once, non-render-blocking, with a noscript fallback.
+
+      Rajdhani only ships 300/400/500/600/700. The old request asked for 800,
+      which does not exist, so it never arrived and the browser faked it with
+      synthetic bold. Now asking for 600 and 700, both real.
+
+      Space Grotesk gained 600 here because `font-semibold` is used in the
+      components but the weight was never being loaded.
+    -->
     <link
       rel="stylesheet"
-      href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@700;800&family=Space+Grotesk:wght@400;500;700&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap"
       media="print"
       onload="this.media='all'"
     />
     <noscript>
       <link
         rel="stylesheet"
-        href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@700;800&family=Space+Grotesk:wght@400;500;700&display=swap"
+        href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap"
       />
     </noscript>
 
-    <title>Cheristral Studio</title>
-    <meta name="description" content="Next-Gen Gaming Experiences" />
+    <title>Cheristral Studio - Next-Gen Gaming Experiences</title>
+    <meta
+      name="description"
+      content="Cheristral Studio builds immersive, highly polished interactive experiences. Explore our projects, meet the team, and see open roles."
+    />
+    <link rel="canonical" href="https://cheristral.pages.dev/" />
+    <meta name="theme-color" content="#0a0a0a" />
+
+    <!--
+      Open Graph + Twitter tags. Without these, sharing a link anywhere (Discord,
+      WhatsApp, Twitter, LinkedIn) shows a bare URL with no title or picture.
+      PageMeta.jsx overwrites the title/description/url per page at runtime;
+      these are the defaults crawlers see before any JS runs.
+
+      Replace the two URLs below with your real domain once you have one.
+    -->
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Cheristral Studio" />
+    <meta property="og:title" content="Cheristral Studio - Next-Gen Gaming Experiences" />
+    <meta
+      property="og:description"
+      content="Cheristral Studio builds immersive, highly polished interactive experiences."
+    />
+    <meta property="og:image" content="https://cheristral.pages.dev/og-image.jpg" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:url" content="https://cheristral.pages.dev/" />
+    <meta name="twitter:card" content="summary_large_image" />
   </head>
   <body>
     <div id="root"></div>

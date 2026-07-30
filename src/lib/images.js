@@ -1,6 +1,11 @@
 /**
  * Every image the site uses.
  *
+ * `w` and `h` are the exact pixel dimensions each image is stored at, chosen to
+ * match how the component actually displays it. Getting these wrong is what
+ * made the site slow: portrait photos were being downloaded for landscape slots,
+ * so most of the pixels were cropped away and thrown out.
+ *
  * Files live in  public/images/
  * The site loads them from  /images/<filename>
  *
@@ -17,27 +22,29 @@
  */
 export const IMAGE_MANIFEST = [
   // ---- Full-screen page backgrounds ----
-  { key: 'heroHome',     file: 'hero-home.webp',       width: 1920, unsplash: 'photo-1603810524593-4b55fa902ad6', note: 'Home page hero' },
-  { key: 'heroProjects', file: 'hero-projects.webp',   width: 1920, unsplash: 'photo-1519241047957-be31d7379a5d', note: 'Projects page hero' },
-  { key: 'heroAbout',    file: 'hero-about.webp',      width: 1920, unsplash: 'photo-1589241062313-35890684416a', note: 'About page hero' },
-  { key: 'heroCareers',  file: 'hero-careers.webp',    width: 1920, unsplash: 'photo-1672754091891-b58ed53665e6', note: 'Careers page hero' },
-  { key: 'heroTeam',     file: 'hero-team.webp',       width: 1920, unsplash: 'photo-1683496865103-263bd91872b6', note: 'Team page hero, also the default hero' },
+  { key: 'heroHome',     file: 'hero-home.webp',       w: 1920, h: 1280, unsplash: 'photo-1603810524593-4b55fa902ad6', note: 'Home page hero' },
+  { key: 'heroProjects', file: 'hero-projects.webp',   w: 1920, h: 1280, unsplash: 'photo-1519241047957-be31d7379a5d', note: 'Projects page hero' },
+  { key: 'heroAbout',    file: 'hero-about.webp',      w: 1920, h: 1280, unsplash: 'photo-1589241062313-35890684416a', note: 'About page hero' },
+  { key: 'heroCareers',  file: 'hero-careers.webp',    w: 1920, h: 1280, unsplash: 'photo-1672754091891-b58ed53665e6', note: 'Careers page hero' },
+  { key: 'heroTeam',     file: 'hero-team.webp',       w: 1920, h: 1280, unsplash: 'photo-1683496865103-263bd91872b6', note: 'Team page hero, also the default hero' },
 
-  // ---- Game covers and cards ----
-  { key: 'game01',       file: 'game-01.webp',         width: 1600, unsplash: 'photo-1505635552518-3448ff116af3', note: 'Game 1 cover + card' },
-  { key: 'game02',       file: 'game-02.webp',         width: 1600, unsplash: 'photo-1519074069444-1ba4fff66d16', note: 'Game 2 cover + card. NOTE: the original photo was deleted from Unsplash, this is a stand-in. Replace with a real screenshot.' },
-  { key: 'game03',       file: 'game-03.webp',         width: 1280, unsplash: 'photo-1698325653756-dcf62eca9fc1', note: 'Game 3 card' },
-  { key: 'game04',       file: 'game-04.webp',         width: 1280, unsplash: 'photo-1629867578529-7f5a9f984c78', note: 'Game 4 card' },
+  // ---- Game covers. Shown full width on the detail page and as cards. ----
+  { key: 'game01',       file: 'game-01.webp',         w: 1600, h:  900, unsplash: 'photo-1505635552518-3448ff116af3', note: 'Game 1 cover + card' },
+  { key: 'game02',       file: 'game-02.webp',         w: 1600, h:  900, unsplash: 'photo-1519074069444-1ba4fff66d16', note: 'Game 2 cover + card. Original photo was deleted from Unsplash, this is a stand-in.' },
 
-  // ---- Gallery screenshots ----
-  { key: 'shot01',       file: 'game-01-shot-1.webp',  width: 1280, unsplash: 'photo-1549500379-1938ee1fc6a8', note: 'Gallery. NOTE: the original photo was deleted from Unsplash, this is a stand-in. Replace with a real screenshot.' },
-  { key: 'shot02',       file: 'game-01-shot-2.webp',  width: 1280, unsplash: 'photo-1504253163759-c23fccaebb55', note: 'Gallery' },
-  { key: 'shot03',       file: 'game-01-shot-3.webp',  width: 1280, unsplash: 'photo-1519074069444-1ba4fff66d16', note: 'Gallery' },
-  { key: 'shot04',       file: 'game-02-shot-1.webp',  width: 1280, unsplash: 'photo-1518709268805-4e9042af9f23', note: 'Gallery' },
+  // ---- Cards only, so they never need to be large ----
+  { key: 'game03',       file: 'game-03.webp',         w:  800, h:  450, unsplash: 'photo-1698325653756-dcf62eca9fc1', note: 'Game 3 card' },
+  { key: 'game04',       file: 'game-04.webp',         w:  800, h:  450, unsplash: 'photo-1629867578529-7f5a9f984c78', note: 'Game 4 card' },
+
+  // ---- Gallery screenshots, shown 16:9 ----
+  { key: 'shot01',       file: 'game-01-shot-1.webp',  w: 1280, h:  720, unsplash: 'photo-1549500379-1938ee1fc6a8', note: 'Gallery. Original photo was deleted from Unsplash, this is a stand-in.' },
+  { key: 'shot02',       file: 'game-01-shot-2.webp',  w: 1280, h:  720, unsplash: 'photo-1504253163759-c23fccaebb55', note: 'Gallery' },
+  { key: 'shot03',       file: 'game-01-shot-3.webp',  w: 1280, h:  720, unsplash: 'photo-1519074069444-1ba4fff66d16', note: 'Gallery' },
+  { key: 'shot04',       file: 'game-02-shot-1.webp',  w: 1280, h:  720, unsplash: 'photo-1518709268805-4e9042af9f23', note: 'Gallery' },
 
   // ---- Misc ----
-  { key: 'texture',      file: 'texture-bg.webp',      width: 1280, unsplash: 'photo-1550745165-9bc0b252726f',    note: 'Faint background texture + gallery' },
-  { key: 'cardFallback', file: 'card-fallback.webp',   width: 800,  unsplash: 'photo-1549500379-1938ee1fc6a8',    note: 'Shown if a project image fails to load' },
+  { key: 'texture',      file: 'texture-bg.webp',      w: 1280, h:  720, unsplash: 'photo-1550745165-9bc0b252726f',    note: 'Faint background texture + gallery' },
+  { key: 'cardFallback', file: 'card-fallback.webp',   w:  800, h:  450, unsplash: 'photo-1549500379-1938ee1fc6a8',    note: 'Shown if a project image fails to load' },
 ];
 
 /** { heroHome: '/images/hero-home.webp', ... } */
