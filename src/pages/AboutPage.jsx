@@ -1,6 +1,6 @@
 
 import React from 'react';
-import { Helmet } from 'react-helmet';
+import PageMeta from '@/components/PageMeta.jsx';
 import { motion } from 'framer-motion';
 import Header from '@/components/Header.jsx';
 import Footer from '@/components/Footer.jsx';
@@ -48,10 +48,7 @@ const AboutPage = () => {
 
   return (
     <>
-      <Helmet>
-        <title>Intel - Cheristral Studio</title>
-        <meta name="description" content="Learn about Cheristral Studio's mission, values, and commitment to creating exceptional gaming experiences." />
-      </Helmet>
+      <PageMeta title="Intel - Cheristral Studio" description="Learn about Cheristral Studio's mission, values, and commitment to creating exceptional gaming experiences." />
 
       <div className="min-h-screen flex flex-col bg-background">
         <Header />

@@ -1,6 +1,6 @@
 
 import React, { Suspense, lazy } from 'react';
-import { Helmet } from 'react-helmet';
+import PageMeta from '@/components/PageMeta.jsx';
 import { motion } from 'framer-motion';
 import Header from '@/components/Header.jsx';
 import Footer from '@/components/Footer.jsx';
@@ -63,10 +63,7 @@ const CareersPage = () => {
 
   return (
     <>
-      <Helmet>
-        <title>Careers - Cheristral Studio</title>
-        <meta name="description" content="Explore opportunities to join Cheristral Studio and contribute to exceptional interactive experiences." />
-      </Helmet>
+      <PageMeta title="Careers - Cheristral Studio" description="Explore opportunities to join Cheristral Studio and contribute to exceptional interactive experiences." />
 
       <div className="min-h-screen flex flex-col bg-background">
         <Header />
