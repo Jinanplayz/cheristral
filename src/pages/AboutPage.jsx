@@ -83,7 +83,7 @@ const AboutPage = () => {
                     <m.div variants={itemVariants} className="relative pl-6 border-l-2 border-primary/50">
                       <h3 className="text-xl font-bold text-primary uppercase tracking-wider mb-2">Foundation</h3>
                       <p>
-                        Established in January 2025, Cheristral Studio was founded by Ahnaf Saleque Jinan, serving as CEO and Lead Producer. Driven by a distinct vision to elevate interactive entertainment, he collaborated with Abdullah Al-Nahian and Abdullah Ibn Mahmud to form the core architectural team dedicated to developing exceptionally sophisticated titles.
+                        Established in early 2026, Cheristral Studio was founded by Ahnaf Saleque Jinan, serving as CEO and Lead Producer. Driven by a distinct vision to elevate interactive entertainment, he collaborated with Abdullah Al-Nahian and Abdullah Ibn Mahmud to form the core architectural team dedicated to developing exceptionally sophisticated titles.
                       </p>
                     </m.div>
 
@@ -91,7 +91,7 @@ const AboutPage = () => {
                     <m.div variants={itemVariants} className="relative pl-6 border-l-2 border-primary/50">
                       <h3 className="text-xl font-bold text-primary uppercase tracking-wider mb-2">Operational Expansion</h3>
                       <p>
-                        By May 2025, the studio advanced into active development. To reinforce our infrastructure and guarantee exceptional quality, the organization expanded to welcome Arashuzzaman Khan managing Public Relations, alongside Al-Hasin Mahtab driving Quality Assurance. This strategic growth established a rigorous foundation for future developments.
+                        By July 2026, the studio advanced into active development. To reinforce our infrastructure and guarantee exceptional quality, the organization expanded to welcome Arashuzzaman Khan managing Public Relations, alongside Al-Hasin Mahtab driving Quality Assurance. This strategic growth established a rigorous foundation for future developments.
                       </p>
                     </m.div>
 
