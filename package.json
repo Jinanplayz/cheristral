@@ -7,14 +7,10 @@
     "dev": "vite --host --port 3000",
     "build": "vite build",
     "preview": "vite preview --port 3000",
-<<<<<<< Updated upstream
-    "lint": "eslint . --quiet"
-=======
     "lint": "eslint . --quiet",
     "images": "node scripts/download-images.mjs",
     "start": "node scripts/download-images.mjs && vite --host --port 3000",
     "optimize": "node scripts/optimize-images.mjs"
->>>>>>> Stashed changes
   },
   "dependencies": {
     "@radix-ui/react-dialog": "^1.1.15",
