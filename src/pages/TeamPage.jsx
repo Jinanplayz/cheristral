@@ -20,6 +20,8 @@ const TeamPage = () => {
     {
       name: 'Ahnaf Saleque Jinan',
       position: 'Lead Engineer and Producer',
+      // Makes the name clickable, linking through to the unlisted CV at /ceo.
+      profileLink: '/ceo',
       description: 'Serving as CEO and Lead Producer, directing the studio\'s overarching vision and driving core narrative development with extensive industry expertise.',
     },
     {

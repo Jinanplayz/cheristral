@@ -1,13 +1,18 @@
 
 import React, { memo } from 'react';
 import { m, useReducedMotion } from 'framer-motion';
+import { Link } from 'react-router-dom';
 
 const getOptimizedPhoto = (url) => {
   if (!url || !url.includes('unsplash.com')) return url;
   return `${url}&fm=webp&w=400&q=80`;
 };
 
-const TeamMemberCard = memo(({ photo, name, position, description }) => {
+/**
+ * `profileLink` is optional. When set, the member's name becomes a link.
+ * Used to point from the team page to the unlisted /ceo CV.
+ */
+const TeamMemberCard = memo(({ photo, name, position, description, profileLink }) => {
   const shouldReduceMotion = useReducedMotion();
   const optimizedPhoto = getOptimizedPhoto(photo);
 
@@ -43,7 +48,16 @@ const TeamMemberCard = memo(({ photo, name, position, description }) => {
 
       <div className="flex flex-col flex-grow">
         <h3 className="text-2xl font-black uppercase tracking-wide mb-1 group-hover:text-primary transition-colors duration-300">
-          {name}
+          {profileLink ? (
+            <Link
+              to={profileLink}
+              className="hover:text-primary transition-colors underline-offset-4 hover:underline decoration-primary/50"
+            >
+              {name}
+            </Link>
+          ) : (
+            name
+          )}
         </h3>
         <p className="text-sm font-bold uppercase tracking-widest text-primary mb-4">{position}</p>
         {description && (

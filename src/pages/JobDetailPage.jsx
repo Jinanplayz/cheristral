@@ -272,13 +272,22 @@ const JobDetailPage = () => {
 
                   <div className="space-y-6 relative z-10">
                     <p className="text-sm text-foreground/70 font-medium leading-relaxed">
-                      Ready to join the team? Click below to open our application form for <span className="text-primary font-bold">{job.title}</span>. You'll be able to share your details, resume, and portfolio there.
+                      Ready to join the team? Get in touch about <span className="text-primary font-bold">{job.title}</span> and share your details, CV and portfolio.
                     </p>
 
                     <FormCTAButton
                       url={APPLICATION_FORM_URL}
                       label="Apply Now"
                       icon={ArrowUpRight}
+                      mailSubject={`Application: ${job.title}`}
+                      mailBody={
+                        `Role: ${job.title}\n\n` +
+                        `Name:\n` +
+                        `Portfolio or showreel:\n` +
+                        `Relevant experience:\n` +
+                        `Availability:\n\n` +
+                        `(Attach your CV to this email.)`
+                      }
                     />
                   </div>
                 </div>
