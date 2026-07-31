@@ -2,11 +2,12 @@
 import React, { useState, memo } from 'react';
 import { Link } from 'react-router-dom';
 import { Download, Star, Calendar } from 'lucide-react';
-import { motion, useReducedMotion } from 'framer-motion';
+import { m, useReducedMotion } from 'framer-motion';
 import { Badge } from '@/components/ui/badge';
+import { cards } from '@/lib/images';
 
 const ProjectCard = memo(({ id = "1", title, image, downloads, rating, releaseDate, description, tags }) => {
-  const fallbackImage = "https://images.unsplash.com/photo-1549500379-1938ee1fc6a8";
+  const fallbackImage = cards.fallback;
   const [imgSrc, setImgSrc] = useState(image);
   const [isLoaded, setIsLoaded] = useState(false);
   const [hasError, setHasError] = useState(false);
@@ -27,7 +28,7 @@ const ProjectCard = memo(({ id = "1", title, image, downloads, rating, releaseDa
 
   return (
     <Link to={`/projects/${id}`} className="block h-full outline-none focus-visible:ring-2 focus-visible:ring-primary rounded-2xl">
-      <motion.div
+      <m.div
         initial={shouldReduceMotion ? { opacity: 1 } : { opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true, margin: "50px" }}
@@ -85,7 +86,7 @@ const ProjectCard = memo(({ id = "1", title, image, downloads, rating, releaseDa
             </div>
           )}
         </div>
-      </motion.div>
+      </m.div>
     </Link>
   );
 });

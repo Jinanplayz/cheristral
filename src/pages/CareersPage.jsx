@@ -1,11 +1,12 @@
 
 import React, { Suspense, lazy } from 'react';
 import PageMeta from '@/components/PageMeta.jsx';
-import { motion } from 'framer-motion';
+import { m } from 'framer-motion';
 import Header from '@/components/Header.jsx';
 import Footer from '@/components/Footer.jsx';
 import HeroSection from '@/components/HeroSection.jsx';
 import { Skeleton } from '@/components/ui/skeleton';
+import { heroes } from '@/lib/images';
 
 const JobCard = lazy(() => import('@/components/JobCard.jsx'));
 
@@ -70,7 +71,7 @@ const CareersPage = () => {
 
         <main className="flex-1">
           <HeroSection
-            backgroundImage="https://images.unsplash.com/photo-1672754091891-b58ed53665e6?auto=format&fit=crop&q=80"
+            backgroundImage={heroes.careers}
             title="CAREERS"
             subtitle="We are continuously seeking exceptional talent to join our studio. Whether you are an industry veteran or an emerging professional, discover your next opportunity with us."
           />
@@ -79,7 +80,7 @@ const CareersPage = () => {
             <div className="absolute inset-0 bg-background/90 z-0 pointer-events-none" />
             
             <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-              <motion.div
+              <m.div
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
@@ -89,7 +90,7 @@ const CareersPage = () => {
                 <p className="text-lg text-foreground/70 max-w-3xl mx-auto font-medium">
                   We foster talent and provide substantial opportunities for professional growth. We invite candidates of all experience levels to explore our current openings.
                 </p>
-              </motion.div>
+              </m.div>
 
               <div className="grid grid-cols-1 md:grid-cols-2 gap-10 max-w-6xl mx-auto">
                 <Suspense fallback={

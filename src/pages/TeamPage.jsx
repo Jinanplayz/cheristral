@@ -1,11 +1,12 @@
 
 import React, { Suspense, lazy } from 'react';
 import PageMeta from '@/components/PageMeta.jsx';
-import { motion } from 'framer-motion';
+import { m } from 'framer-motion';
 import Header from '@/components/Header.jsx';
 import Footer from '@/components/Footer.jsx';
 import HeroSection from '@/components/HeroSection.jsx';
 import { Skeleton } from '@/components/ui/skeleton';
+import { heroes } from '@/lib/images';
 
 const TeamMemberCard = lazy(() => import('@/components/TeamMemberCard.jsx'));
 
@@ -52,7 +53,7 @@ const TeamPage = () => {
 
         <main className="flex-1">
           <HeroSection
-            backgroundImage="https://images.unsplash.com/photo-1683496865103-263bd91872b6?auto=format&fit=crop&q=80"
+            backgroundImage={heroes.team}
             title="OUR STUDIO"
             subtitle="An assembly of exceptional talent dedicated to advancing the medium of interactive storytelling."
           />
@@ -61,7 +62,7 @@ const TeamPage = () => {
             <div className="absolute inset-0 bg-background/95 z-0 pointer-events-none" />
             
             <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-              <motion.div
+              <m.div
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
@@ -71,7 +72,7 @@ const TeamPage = () => {
                 <p className="text-lg text-foreground/70 max-w-3xl mx-auto font-medium">
                   Our team brings together specialized expertise from across the interactive entertainment sector, united by a shared commitment to remarkable innovation.
                 </p>
-              </motion.div>
+              </m.div>
 
               <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-12 max-w-7xl mx-auto">
                 <Suspense fallback={

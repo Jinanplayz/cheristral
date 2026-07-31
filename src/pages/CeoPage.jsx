@@ -2,7 +2,7 @@ import React from 'react';
 import PageMeta from '@/components/PageMeta.jsx';
 import Header from '@/components/Header.jsx';
 import Footer from '@/components/Footer.jsx';
-import { motion, useReducedMotion } from 'framer-motion';
+import { m, useReducedMotion } from 'framer-motion';
 import { Mail, Github, Linkedin, MapPin, Printer, MessageSquare, Phone } from 'lucide-react';
 
 /**
@@ -26,9 +26,9 @@ const cv = {
 
   location: 'Dhaka, Bangladesh',
   email: 'ahnafsalequejinan@gmail.com',
-  discord: 'Discord: Jinanplayz',
+  discord: 'Jinanplayz',
   github: 'https://github.com/Jinanplayz',
-  linkedin: 'https://linkedin.com/in/ahnaf-saleque-jinan-817801374',
+  linkedin: '',
 
   // Deliberately empty. Read the note above before filling these in.
   phone: 'Contact Email for phone number',            
@@ -119,7 +119,7 @@ const cv = {
 };
 
 const Section = ({ title, children, delay = 0, reduce }) => (
-  <motion.section
+  <m.section
     initial={reduce ? { opacity: 1 } : { opacity: 0, y: 16 }}
     whileInView={{ opacity: 1, y: 0 }}
     viewport={{ once: true, margin: '-60px' }}
@@ -130,7 +130,7 @@ const Section = ({ title, children, delay = 0, reduce }) => (
       {title}
     </h2>
     {children}
-  </motion.section>
+  </m.section>
 );
 
 const Bullet = ({ children }) => (
@@ -164,7 +164,7 @@ const CeoPage = () => {
       </div>
 
       <main className="container mx-auto px-4 sm:px-6 lg:px-8 pt-32 pb-20 print:pt-0 print:pb-0 max-w-4xl">
-        <motion.header
+        <m.header
           initial={reduce ? { opacity: 1 } : { opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: reduce ? 0 : 0.45 }}
@@ -209,7 +209,7 @@ const CeoPage = () => {
               )
             )}
           </div>
-        </motion.header>
+        </m.header>
 
         {cv.summary && (
           <Section title="Profile" delay={0.05} reduce={reduce}>

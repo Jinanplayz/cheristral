@@ -1,5 +1,5 @@
 import React, { useState, useCallback, memo } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
+import { m, AnimatePresence } from 'framer-motion';
 import { X, ChevronLeft, ChevronRight } from 'lucide-react';
 
 const ImageGallery = memo(({ images }) => {
@@ -33,7 +33,7 @@ const ImageGallery = memo(({ images }) => {
     <>
       <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
         {images.map((img, index) => (
-          <motion.button
+          <m.button
             key={index}
             whileHover={{ scale: 1.02 }}
             whileTap={{ scale: 0.98 }}
@@ -49,13 +49,13 @@ const ImageGallery = memo(({ images }) => {
               className="w-full h-full object-cover"
             />
             <div className="absolute inset-0 bg-primary/0 hover:bg-primary/20 transition-colors duration-300" />
-          </motion.button>
+          </m.button>
         ))}
       </div>
 
       <AnimatePresence>
         {isOpen && (
-          <motion.div
+          <m.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
@@ -92,7 +92,7 @@ const ImageGallery = memo(({ images }) => {
               <ChevronRight size={32} />
             </button>
 
-            <motion.div
+            <m.div
               key={currentIndex}
               initial={{ opacity: 0, scale: 0.95 }}
               animate={{ opacity: 1, scale: 1 }}
@@ -107,8 +107,8 @@ const ImageGallery = memo(({ images }) => {
                 decoding="async"
                 className="max-w-full max-h-[85vh] object-contain rounded-lg shadow-[0_0_50px_rgba(255,23,68,0.2)] border border-white/10"
               />
-            </motion.div>
-          </motion.div>
+            </m.div>
+          </m.div>
         )}
       </AnimatePresence>
     </>

@@ -2,7 +2,7 @@
 import React from 'react';
 import PageMeta from '@/components/PageMeta.jsx';
 import { useParams, Link, Navigate } from 'react-router-dom';
-import { motion } from 'framer-motion';
+import { m } from 'framer-motion';
 import { ArrowLeft, Briefcase, MapPin, Clock, CheckCircle2, DollarSign, ArrowUpRight, HeartPulse, ShieldCheck, Zap, Gamepad2, Users, Sparkles } from 'lucide-react';
 import Header from '@/components/Header.jsx';
 import Footer from '@/components/Footer.jsx';
@@ -201,7 +201,7 @@ const JobDetailPage = () => {
                 <ArrowLeft className="mr-2 h-5 w-5" /> Back to Open Positions
               </Link>
               
-              <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }}>
+              <m.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }}>
                 <Badge variant="outline" className="border-primary/50 text-primary bg-primary/10 mb-6 text-sm uppercase px-4 py-1 font-bold">
                   {job.department}
                 </Badge>
@@ -212,7 +212,7 @@ const JobDetailPage = () => {
                   <div className="flex items-center gap-2"><Briefcase className="h-5 w-5 text-primary" /> {job.type}</div>
                   <div className="flex items-center gap-2"><DollarSign className="h-5 w-5 text-primary" /> {job.salary}</div>
                 </div>
-              </motion.div>
+              </m.div>
             </div>
           </div>
 

@@ -1,17 +1,16 @@
 
 import React from 'react';
 import PageMeta from '@/components/PageMeta.jsx';
-import { motion } from 'framer-motion';
+import { m } from 'framer-motion';
 import Header from '@/components/Header.jsx';
 import Footer from '@/components/Footer.jsx';
 import HeroSection from '@/components/HeroSection.jsx';
 import ContactForm from '@/components/ContactForm.jsx';
 import { Target, Users, Zap, ShieldAlert } from 'lucide-react';
-import { useImagePreload } from '@/hooks/useImagePreload.js';
+import { heroes } from '@/lib/images';
 
 const AboutPage = () => {
-  const bgUrl = "https://images.unsplash.com/photo-1550745165-9bc0b252726f?auto=format&fit=crop&q=80";
-  const isBgLoaded = useImagePreload(bgUrl);
+  const bgUrl = heroes.texture;
 
   const values = [{
     icon: Target,
@@ -55,7 +54,7 @@ const AboutPage = () => {
 
         <main className="flex-1">
           <HeroSection 
-            backgroundImage="https://images.unsplash.com/photo-1589241062313-35890684416a?auto=format&fit=crop&q=80" 
+            backgroundImage={heroes.about} 
             title="OUR STUDIO" 
             subtitle="Architecting the future of interactive entertainment through distinguished design and technical excellence." 
           />
@@ -64,7 +63,7 @@ const AboutPage = () => {
           <section className="py-24 relative overflow-hidden">
             <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
               <div className="max-w-4xl mx-auto">
-                <motion.div 
+                <m.div 
                   initial={{ opacity: 0, x: -50 }} 
                   whileInView={{ opacity: 1, x: 0 }} 
                   viewport={{ once: true }} 
@@ -73,7 +72,7 @@ const AboutPage = () => {
                 >
                   <h2 className="text-4xl md:text-5xl font-black mb-10 uppercase text-glow">Our History</h2>
                   
-                  <motion.div 
+                  <m.div 
                     variants={containerVariants}
                     initial="hidden"
                     whileInView="visible"
@@ -81,38 +80,38 @@ const AboutPage = () => {
                     className="space-y-8 text-lg text-foreground/80 leading-relaxed font-medium"
                   >
                     {/* Founder Introduction */}
-                    <motion.div variants={itemVariants} className="relative pl-6 border-l-2 border-primary/50">
+                    <m.div variants={itemVariants} className="relative pl-6 border-l-2 border-primary/50">
                       <h3 className="text-xl font-bold text-primary uppercase tracking-wider mb-2">Foundation</h3>
                       <p>
                         Established in January 2025, Cheristral Studio was founded by Ahnaf Saleque Jinan, serving as CEO and Lead Producer. Driven by a distinct vision to elevate interactive entertainment, he collaborated with Abdullah Al-Nahian and Abdullah Ibn Mahmud to form the core architectural team dedicated to developing exceptionally sophisticated titles.
                       </p>
-                    </motion.div>
+                    </m.div>
 
                     {/* Team Expansion */}
-                    <motion.div variants={itemVariants} className="relative pl-6 border-l-2 border-primary/50">
+                    <m.div variants={itemVariants} className="relative pl-6 border-l-2 border-primary/50">
                       <h3 className="text-xl font-bold text-primary uppercase tracking-wider mb-2">Operational Expansion</h3>
                       <p>
                         By May 2025, the studio advanced into active development. To reinforce our infrastructure and guarantee exceptional quality, the organization expanded to welcome Arashuzzaman Khan managing Public Relations, alongside Al-Hasin Mahtab driving Quality Assurance. This strategic growth established a rigorous foundation for future developments.
                       </p>
-                    </motion.div>
+                    </m.div>
 
                     {/* Mission Statement */}
-                    <motion.div variants={itemVariants} className="relative pl-6 border-l-2 border-primary/50">
+                    <m.div variants={itemVariants} className="relative pl-6 border-l-2 border-primary/50">
                       <h3 className="text-xl font-bold text-primary uppercase tracking-wider mb-2">Core Mission</h3>
                       <p>
                         Our mission remains absolute: to engineer distinguished, highly engaging interactive experiences that deeply resonate with our audience. We are committed to pushing creative boundaries, integrating sophisticated mechanics, and delivering outstanding quality that establishes a lasting legacy.
                       </p>
-                    </motion.div>
+                    </m.div>
 
                     {/* Ambitious Goals */}
-                    <motion.div variants={itemVariants} className="relative pl-6 border-l-2 border-primary/50">
+                    <m.div variants={itemVariants} className="relative pl-6 border-l-2 border-primary/50">
                       <h3 className="text-xl font-bold text-primary uppercase tracking-wider mb-2">Future Trajectory</h3>
                       <p>
                         Looking forward, our strategic trajectory is focused on significant global impact. We are committed to establishing Cheristral Studio as an acclaimed, progressive force within the international interactive entertainment industry.
                       </p>
-                    </motion.div>
-                  </motion.div>
-                </motion.div>
+                    </m.div>
+                  </m.div>
+                </m.div>
               </div>
             </div>
           </section>
@@ -120,7 +119,7 @@ const AboutPage = () => {
           {/* Core Values */}
           <section className="py-24 bg-secondary/30 border-y border-border/30 relative">
             <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-              <motion.div 
+              <m.div 
                 initial={{ opacity: 0, y: 20 }} 
                 whileInView={{ opacity: 1, y: 0 }} 
                 viewport={{ once: true }} 
@@ -130,13 +129,13 @@ const AboutPage = () => {
                 <p className="text-lg text-foreground/70 max-w-2xl mx-auto font-medium">
                   The strict parameters that dictate our internal methodology, from sophisticated architecture to a collaborative team environment.
                 </p>
-              </motion.div>
+              </m.div>
 
               <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-6xl mx-auto">
                 {values.map((value, index) => {
                   const Icon = value.icon;
                   return (
-                    <motion.div 
+                    <m.div 
                       key={index} 
                       initial={{ opacity: 0, y: 30 }} 
                       whileInView={{ opacity: 1, y: 0 }} 
@@ -155,7 +154,7 @@ const AboutPage = () => {
                           <p className="text-base text-card-foreground/70 font-medium leading-relaxed">{value.description}</p>
                         </div>
                       </div>
-                    </motion.div>
+                    </m.div>
                   );
                 })}
               </div>
@@ -165,15 +164,20 @@ const AboutPage = () => {
           {/* Contact Section */}
           <section className="py-32 relative overflow-hidden">
             {/* Stable Background Container */}
-            <div 
-              className={`absolute inset-0 bg-image-stable opacity-5 mix-blend-screen pointer-events-none ${!isBgLoaded ? 'bg-[hsl(var(--image-placeholder-bg))]' : ''}`}
-              style={isBgLoaded ? { backgroundImage: `url(${bgUrl})` } : {}}
+            {/* Decorative texture at 5% opacity. Lazy, so it costs nothing up front. */}
+            <img
+              src={bgUrl}
+              alt=""
+              aria-hidden="true"
+              loading="lazy"
+              decoding="async"
+              className="absolute inset-0 w-full h-full object-cover object-center opacity-5 mix-blend-screen pointer-events-none"
             />
             <div className="absolute inset-0 bg-gradient-to-b from-background via-background/95 to-background pointer-events-none" />
             
             <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
               <div className="max-w-3xl mx-auto">
-                <motion.div 
+                <m.div 
                   initial={{ opacity: 0, y: 20 }} 
                   whileInView={{ opacity: 1, y: 0 }} 
                   viewport={{ once: true }} 
@@ -183,16 +187,16 @@ const AboutPage = () => {
                   <p className="text-lg text-foreground/70 font-medium">
                     Have an inquiry? Contact our team through the secure channel below. We aim to respond within 24-48 hours.
                   </p>
-                </motion.div>
+                </m.div>
 
-                <motion.div 
+                <m.div 
                   initial={{ opacity: 0, y: 30 }} 
                   whileInView={{ opacity: 1, y: 0 }} 
                   viewport={{ once: true }} 
                   transition={{ delay: 0.2 }}
                 >
                   <ContactForm />
-                </motion.div>
+                </m.div>
               </div>
             </div>
           </section>

@@ -1,7 +1,7 @@
 
 import React, { memo } from 'react';
 import { Link } from 'react-router-dom';
-import { motion, useReducedMotion } from 'framer-motion';
+import { m, useReducedMotion } from 'framer-motion';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import { MapPin, Clock } from 'lucide-react';
@@ -11,7 +11,7 @@ const JobCard = memo(({ id = "1", title, department, description, location = "Re
 
   return (
     <Link to={`/careers/${id}`} className="block h-full outline-none focus-visible:ring-2 focus-visible:ring-primary rounded-2xl">
-      <motion.div
+      <m.div
         initial={shouldReduceMotion ? { opacity: 1 } : { opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
@@ -50,7 +50,7 @@ const JobCard = memo(({ id = "1", title, department, description, location = "Re
             View Details
           </Button>
         </div>
-      </motion.div>
+      </m.div>
     </Link>
   );
 });

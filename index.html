@@ -7,6 +7,15 @@
 
     <!-- Connect to font hosts early -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <!--
+      Preload the home page hero. The site is client-rendered, so without this
+      the browser cannot start downloading the hero until all the JavaScript has
+      arrived and React has rendered. This lets both happen in parallel.
+
+      If you rename hero-home.webp, update this line too.
+    -->
+    <link rel="preload" as="image" href="/images/hero-home.webp" fetchpriority="high" />
+
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link rel="dns-prefetch" href="https://images.unsplash.com" />
 

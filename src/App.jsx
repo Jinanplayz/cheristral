@@ -2,6 +2,7 @@ import React, { Suspense, lazy } from 'react';
 import { Route, Routes, BrowserRouter as Router } from 'react-router-dom';
 import ScrollToTop from './components/ScrollToTop.jsx';
 import { Toaster } from 'sonner';
+import { LazyMotion, domAnimation } from 'framer-motion';
 
 // Lazy load pages for route-based code splitting
 const HomePage = lazy(() => import('./pages/HomePage.jsx'));
@@ -25,7 +26,8 @@ const LoadingFallback = () => (
 
 function App() {
   return (
-    <Router>
+    <LazyMotion features={domAnimation} strict>
+      <Router>
       <ScrollToTop />
       <Suspense fallback={<LoadingFallback />}>
         <Routes>
@@ -51,7 +53,8 @@ function App() {
         </Routes>
       </Suspense>
       <Toaster theme="dark" position="bottom-right" className="uppercase font-bold tracking-wider" />
-    </Router>
+      </Router>
+    </LazyMotion>
   );
 }
 

@@ -2,12 +2,13 @@
 import React, { useEffect, useState, useRef, lazy, Suspense } from 'react';
 import PageMeta from '@/components/PageMeta.jsx';
 import { Link } from 'react-router-dom';
-import { motion, useInView } from 'framer-motion';
+import { m, useInView } from 'framer-motion';
 import Header from '@/components/Header.jsx';
 import Footer from '@/components/Footer.jsx';
 import HeroSection from '@/components/HeroSection.jsx';
 import { Button } from '@/components/ui/button';
 import { Skeleton } from '@/components/ui/skeleton';
+import { heroes, cards } from '@/lib/images';
 
 // Lazy loaded heavy components
 const ProjectCard = lazy(() => import('@/components/ProjectCard.jsx'));
@@ -46,7 +47,7 @@ const HomePage = () => {
       rating: '5.0',
       releaseDate: '2026',
       tags: ['horror', 'psychological', 'action', 'adventure'],
-      image: 'https://images.unsplash.com/photo-1505635552518-3448ff116af3?auto=format&fit=crop&q=80'
+      image: cards.game01
     }, 
     {
       id: "upcoming-2",
@@ -56,7 +57,7 @@ const HomePage = () => {
       rating: '5.0',
       releaseDate: '2026',
       tags: ['horror', 'psychological', 'thriller', 'action'],
-      image: 'https://images.unsplash.com/photo-1698325653756-dcf62eca9fc1?auto=format&fit=crop&q=80'
+      image: cards.game03
     }
   ];
 
@@ -109,7 +110,8 @@ const HomePage = () => {
 
         <main className="flex-1">
           <HeroSection 
-            backgroundImage="https://images.unsplash.com/photo-1603810524593-4b55fa902ad6" 
+            backgroundImage={heroes.home}
+            priority 
             title="REDEFINING INTERACTIVE EXPERIENCES" 
             subtitle="We develop highly sophisticated, immersive environments that redefine interactive entertainment, combining uncompromising quality with exceptional innovation." 
             ctaText="EXPLORE OUR WORK" 
@@ -121,15 +123,15 @@ const HomePage = () => {
             <div className="absolute top-1/2 right-1/4 -translate-y-1/2 w-96 h-96 bg-primary/10 rounded-full blur-[100px] pointer-events-none animate-pulse-glow" />
 
             <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-              <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="text-center mb-20">
+              <m.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="text-center mb-20">
                 <h2 className="text-primary text-xl font-bold tracking-[0.2em] mb-4 uppercase">Our Impact</h2>
                 <p className="text-4xl md:text-5xl font-black uppercase">Studio & Project Metrics</p>
-              </motion.div>
+              </m.div>
 
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
                 {studioStats.map((stat, index) => (
                   <Link to="/projects" key={index} className="block outline-none focus-visible:ring-2 focus-visible:ring-primary rounded-2xl">
-                    <motion.div initial={{ opacity: 0, scale: 0.8 }} whileInView={{ opacity: 1, scale: 1 }} viewport={{ once: true }} transition={{ delay: index * 0.1, duration: 0.5, type: "spring" }} whileHover={{ scale: 1.05, y: -10 }} className="group bg-card/80 backdrop-blur-md border border-border/50 hover:border-primary p-10 rounded-2xl text-center transition-all duration-300 hover:shadow-[0_0_40px_hsl(var(--primary)/0.3)] relative overflow-hidden gpu-accelerated will-change-transform">
+                    <m.div initial={{ opacity: 0, scale: 0.8 }} whileInView={{ opacity: 1, scale: 1 }} viewport={{ once: true }} transition={{ delay: index * 0.1, duration: 0.5, type: "spring" }} whileHover={{ scale: 1.05, y: -10 }} className="group bg-card/80 backdrop-blur-md border border-border/50 hover:border-primary p-10 rounded-2xl text-center transition-all duration-300 hover:shadow-[0_0_40px_hsl(var(--primary)/0.3)] relative overflow-hidden gpu-accelerated will-change-transform">
                       <div className="absolute inset-0 bg-gradient-to-b from-primary/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none" />
                       <div className="relative z-10">
                         <div className="text-6xl md:text-7xl font-black text-foreground group-hover:text-primary transition-colors duration-300 mb-4 font-rajdhani text-glow">
@@ -138,7 +140,7 @@ const HomePage = () => {
                         <h3 className="text-xl md:text-2xl font-bold uppercase tracking-wider mb-2">{stat.label}</h3>
                         <p className="text-sm font-medium text-muted-foreground uppercase tracking-widest">{stat.desc}</p>
                       </div>
-                    </motion.div>
+                    </m.div>
                   </Link>
                 ))}
               </div>
@@ -147,7 +149,7 @@ const HomePage = () => {
 
           <section className="py-32 bg-background">
             <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-              <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-6">
+              <m.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-6">
                 <div>
                   <h2 className="text-primary text-xl font-bold tracking-[0.2em] mb-4 uppercase">Portfolio</h2>
                   <p className="text-4xl md:text-5xl font-black uppercase">Active Projects</p>
@@ -155,7 +157,7 @@ const HomePage = () => {
                 <Button asChild size="lg" className="text-lg font-bold tracking-widest uppercase rounded-none border border-primary bg-primary/10 text-primary hover:bg-primary hover:text-white transition-all shadow-[0_0_15px_hsl(var(--primary)/0.2)] hover:shadow-[0_0_30px_hsl(var(--primary)/0.5)] min-h-[44px]">
                   <Link to="/projects">Explore Our Work</Link>
                 </Button>
-              </motion.div>
+              </m.div>
 
               <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
                 <Suspense fallback={
@@ -172,10 +174,10 @@ const HomePage = () => {
 
           <section className="py-32 bg-card border-t border-border/30 relative">
             <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-              <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="text-center mb-16">
+              <m.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="text-center mb-16">
                 <h2 className="text-primary text-xl font-bold tracking-[0.2em] mb-4 uppercase">Our Leadership</h2>
                 <p className="text-4xl md:text-5xl font-black uppercase max-w-2xl mx-auto">The Visionaries Behind the Studio</p>
-              </motion.div>
+              </m.div>
 
               <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10 mb-16">
                 <Suspense fallback={

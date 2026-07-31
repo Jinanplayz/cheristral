@@ -1,6 +1,6 @@
 
 import React, { memo } from 'react';
-import { motion, useReducedMotion } from 'framer-motion';
+import { m, useReducedMotion } from 'framer-motion';
 
 const getOptimizedPhoto = (url) => {
   if (!url || !url.includes('unsplash.com')) return url;
@@ -12,7 +12,7 @@ const TeamMemberCard = memo(({ photo, name, position, description }) => {
   const optimizedPhoto = getOptimizedPhoto(photo);
 
   return (
-    <motion.div
+    <m.div
       initial={shouldReduceMotion ? { opacity: 1 } : { opacity: 0, scale: 0.95 }}
       whileInView={{ opacity: 1, scale: 1 }}
       viewport={{ once: true }}
@@ -52,7 +52,7 @@ const TeamMemberCard = memo(({ photo, name, position, description }) => {
           </p>
         )}
       </div>
-    </motion.div>
+    </m.div>
   );
 });
 

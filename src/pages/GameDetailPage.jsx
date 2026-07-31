@@ -1,14 +1,14 @@
-
+/* eslint-disable react/no-unknown-property -- lowercase fetchpriority is deliberate. */
 import React from 'react';
 import PageMeta from '@/components/PageMeta.jsx';
 import { useParams, Link } from 'react-router-dom';
-import { motion } from 'framer-motion';
+import { m } from 'framer-motion';
 import { ArrowLeft, Monitor, Gamepad2, Download, Star, Users, Globe, Settings, Terminal, Shield, Tags } from 'lucide-react';
 import Header from '@/components/Header.jsx';
 import Footer from '@/components/Footer.jsx';
 import ImageGallery from '@/components/ImageGallery.jsx';
+import { cards, galleries } from '@/lib/images';
 import { Button } from '@/components/ui/button';
-import { useImagePreload } from '@/hooks/useImagePreload.js';
 
 const GameDetailPage = () => {
   const { gameId } = useParams();
@@ -18,7 +18,7 @@ const GameDetailPage = () => {
       title: "UPCOMING",
       tagline: "In Active Development",
       description: "A sophisticated psychological horror experience currently in development, seamlessly integrating atmospheric storytelling with intense action mechanics and compelling adventure elements.",
-      coverImage: "https://images.unsplash.com/photo-1505635552518-3448ff116af3?auto=format&fit=crop&q=80",
+      coverImage: cards.game01,
       videoUrl: "https://www.youtube.com/embed/dQw4w9WgXcQ", // Safe placeholder
       tags: ['Horror', 'Psychological', 'Action', 'Adventure'],
       stats: {
@@ -30,12 +30,7 @@ const GameDetailPage = () => {
         release: "2026",
         metacritic: "TBA"
       },
-      screenshots: [
-        "https://images.unsplash.com/photo-1629853909748-0382e21b7ceb?auto=format&fit=crop&q=80",
-        "https://images.unsplash.com/photo-1504253163759-c23fccaebb55?auto=format&fit=crop&q=80",
-        "https://images.unsplash.com/photo-1605806616949-1e87b487cb2a?auto=format&fit=crop&q=80",
-        "https://images.unsplash.com/photo-1519074069444-1ba4fff66d16?auto=format&fit=crop&q=80"
-      ],
+      screenshots: galleries.game01,
       features: [
         "Advanced psychological horror design",
         "Atmospheric, tension-driven narrative structure",
@@ -51,7 +46,7 @@ const GameDetailPage = () => {
       title: "UPCOMING",
       tagline: "In Active Development",
       description: "A gripping psychological thriller in active development, combining horror elements with fast-paced action and sophisticated adventure gameplay.",
-      coverImage: "https://images.unsplash.com/photo-1605806616949-1e87b487cb2a?auto=format&fit=crop&q=80",
+      coverImage: cards.game02,
       videoUrl: "https://www.youtube.com/embed/dQw4w9WgXcQ", // Safe placeholder
       tags: ['Horror', 'Psychological', 'Thriller', 'Action'],
       stats: {
@@ -63,12 +58,7 @@ const GameDetailPage = () => {
         release: "2026",
         metacritic: "TBA"
       },
-      screenshots: [
-        "https://images.unsplash.com/photo-1505635552518-3448ff116af3?auto=format&fit=crop&q=80",
-        "https://images.unsplash.com/photo-1518709268805-4e9042af9f23?auto=format&fit=crop&q=80",
-        "https://images.unsplash.com/photo-1504253163759-c23fccaebb55?auto=format&fit=crop&q=80",
-        "https://images.unsplash.com/photo-1550745165-9bc0b252726f?auto=format&fit=crop&q=80"
-      ],
+      screenshots: galleries.game02,
       features: [
         "Compelling psychological thriller narrative",
         "Refined action and sophisticated gameplay mechanics",
@@ -83,7 +73,6 @@ const GameDetailPage = () => {
   };
 
   const game = projectsData[gameId] || projectsData["upcoming-1"];
-  const isCoverLoaded = useImagePreload(game.coverImage);
 
   return (
     <>
@@ -96,9 +85,14 @@ const GameDetailPage = () => {
           {/* Hero Header */}
           <div className="relative h-[70vh] w-full flex items-end pb-20 overflow-hidden">
             {/* Stable Background Container */}
-            <div 
-              className={`absolute inset-0 bg-image-stable z-0 ${!isCoverLoaded ? 'bg-[hsl(var(--image-placeholder-bg))]' : ''}`}
-              style={isCoverLoaded ? { backgroundImage: `url(${game.coverImage})` } : {}}
+            <img
+              src={game.coverImage}
+              alt=""
+              aria-hidden="true"
+              fetchpriority="high"
+              loading="eager"
+              decoding="async"
+              className="absolute inset-0 z-0 w-full h-full object-cover object-center bg-[hsl(var(--image-placeholder-bg))]"
             />
             <div className="absolute inset-0 bg-gradient-to-t from-background via-background/70 to-transparent z-0" />
             
@@ -106,21 +100,21 @@ const GameDetailPage = () => {
               <Link to="/projects" className="inline-flex items-center text-primary hover:text-white font-bold tracking-widest uppercase mb-8 transition-colors">
                 <ArrowLeft className="mr-2 h-5 w-5" /> Return to Database
               </Link>
-              <motion.div
+              <m.div
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.4 }}
                 className="will-change-transform"
               >
-                <motion.h2 
+                <m.h2 
                   className="text-3xl md:text-4xl font-black text-primary uppercase tracking-[0.15em] mt-12 mb-10" 
                   style={{ WebkitTextStroke: '1.5px black', textShadow: '3px 3px 0px #000, 0 0 20px hsl(var(--primary)/0.6)' }}
                 >
                   CHERISTRAL STUDIO
-                </motion.h2>
+                </m.h2>
                 <h1 className="text-6xl md:text-8xl font-black text-white text-glow mb-4 uppercase">{game.title}</h1>
                 <p className="text-2xl md:text-3xl font-bold text-primary tracking-widest uppercase">{game.tagline}</p>
-              </motion.div>
+              </m.div>
             </div>
           </div>
 
@@ -131,7 +125,7 @@ const GameDetailPage = () => {
               <div className="lg:col-span-2 space-y-16">
                 
                 {/* Trailer Embed */}
-                <motion.section 
+                <m.section 
                   initial={{ opacity: 0, scale: 0.98 }}
                   whileInView={{ opacity: 1, scale: 1 }}
                   viewport={{ once: true, margin: "50px" }}
@@ -147,7 +141,7 @@ const GameDetailPage = () => {
                       allowFullScreen
                     ></iframe>
                   </div>
-                </motion.section>
+                </m.section>
 
                 {/* Description & Features */}
                 <section className="space-y-8">
