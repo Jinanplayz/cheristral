@@ -11,6 +11,8 @@ import { useEffect } from 'react';
  * Renders nothing. Use it exactly where <Helmet> used to sit:
  *
  *   <PageMeta title="Projects - Cheristral Studio" description="..." />
+ *
+ * Pass noIndex to keep a page out of search results.
  */
 
 const setMeta = (attr, key, content) => {
@@ -24,7 +26,7 @@ const setMeta = (attr, key, content) => {
   el.setAttribute('content', content);
 };
 
-export default function PageMeta({ title, description, image }) {
+export default function PageMeta({ title, description, image, noIndex = false }) {
   useEffect(() => {
     if (title) {
       document.title = title;
@@ -46,7 +48,15 @@ export default function PageMeta({ title, description, image }) {
     }
 
     setMeta('property', 'og:url', window.location.href);
-  }, [title, description, image]);
+
+    // Ask search engines not to list this page. Only meaningful for pages that
+    // are unlisted rather than secret: anyone with the URL can still open it.
+    if (noIndex) {
+      setMeta('name', 'robots', 'noindex, nofollow');
+    } else {
+      document.head.querySelector('meta[name="robots"]')?.remove();
+    }
+  }, [title, description, image, noIndex]);
 
   return null;
 }

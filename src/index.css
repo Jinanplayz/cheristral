@@ -132,3 +132,26 @@
     background-color: hsl(var(--muted));
   }
 }
+/* Print styles, used by the "Save as PDF" button on /ceo.
+   Screen theme is white-on-near-black, which would waste a cartridge and read
+   badly on paper, so invert to black-on-white and drop the effects. */
+@media print {
+  html, body {
+    background: #fff !important;
+    color: #111 !important;
+  }
+  * {
+    text-shadow: none !important;
+    box-shadow: none !important;
+  }
+  a {
+    color: #111 !important;
+    text-decoration: underline;
+  }
+  h1, h2, h3 {
+    color: #111 !important;
+  }
+  @page {
+    margin: 16mm;
+  }
+}

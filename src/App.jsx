@@ -11,6 +11,9 @@ const TeamPage = lazy(() => import('./pages/TeamPage.jsx'));
 const AboutPage = lazy(() => import('./pages/AboutPage.jsx'));
 const CareersPage = lazy(() => import('./pages/CareersPage.jsx'));
 const JobDetailPage = lazy(() => import('./pages/JobDetailPage.jsx'));
+// Unlisted. Nothing links here, and lazy loading means its code is only
+// downloaded by someone who actually visits /ceo.
+const CeoPage = lazy(() => import('./pages/CeoPage.jsx'));
 
 // Optimized fallback spinner that prevents layout shifts
 const LoadingFallback = () => (
@@ -33,6 +36,8 @@ function App() {
           <Route path="/about" element={<AboutPage />} />
           <Route path="/careers" element={<CareersPage />} />
           <Route path="/careers/:jobId" element={<JobDetailPage />} />
+
+          <Route path="/ceo" element={<CeoPage />} />
           
           <Route path="*" element={
             <div className="min-h-screen flex flex-col items-center justify-center bg-background text-center px-4">
