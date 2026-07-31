@@ -36,7 +36,7 @@ const Header = memo(() => {
           <Link to="/" className="flex items-center space-x-3 group min-h-[44px]">
             <div className="relative w-12 h-12 flex items-center justify-center transition-transform duration-300 group-hover:scale-105 group-hover:-rotate-3 rounded-xl overflow-hidden border border-primary/30 shadow-[0_0_10px_hsl(var(--primary)/0.2)] bg-black/50 will-change-transform">
                <img 
-                 src="https://horizons-cdn.hostinger.com/ca6e0a90-1b3b-4730-865a-5a4f40a1da67/ea0338409f090f27c6edae3586f43e93.png" 
+                 src="src=/logo.png" 
                  alt="Cheristral Studio Logo"
                  width="48"
                  height="48"
