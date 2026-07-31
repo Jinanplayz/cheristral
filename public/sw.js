@@ -1,7 +1,10 @@
 // Bump this version on each deploy to invalidate old caches.
 // v3: images moved from Unsplash to self-hosted /images/, so the old
-// multi-megabyte cached copies need to be evicted.
-const CACHE_NAME = 'cheristral-cache-v4';
+//     multi-megabyte cached copies needed evicting.
+// v5: the image handler used to cache ANY response, including 404s. Once a
+//     404 was stored it was served forever, which is what broke the logo.
+//     Bumping the name evicts those poisoned entries.
+const CACHE_NAME = 'cheristral-cache-v5';
 
 // Only precache the app shell. (manifest.json was removed — it never existed and
 // caused the install step to reject.)
@@ -46,8 +49,15 @@ self.addEventListener('fetch', (event) => {
       caches.match(request).then((cached) => {
         const network = fetch(request)
           .then((response) => {
-            const clone = response.clone();
-            caches.open(CACHE_NAME).then((cache) => cache.put(request, clone));
+            // Only cache real successes. Caching a 404 or a 5xx means the
+            // browser keeps serving that failure even after the file is fixed
+            // on the server, because the request never leaves the device.
+            // `response.ok` covers 200-299; opaque cross-origin responses have
+            // status 0 and are deliberately excluded.
+            if (response.ok) {
+              const clone = response.clone();
+              caches.open(CACHE_NAME).then((cache) => cache.put(request, clone));
+            }
             return response;
           })
           .catch(() => cached);
