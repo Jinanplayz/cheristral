@@ -5,9 +5,9 @@
   are driven by hardcoded data that will change.
 -->
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url><loc>https://cheristral.pages.dev/</loc><priority>1.0</priority></url>
-  <url><loc>https://cheristral.pages.dev/projects</loc><priority>0.8</priority></url>
-  <url><loc>https://cheristral.pages.dev/team</loc><priority>0.6</priority></url>
-  <url><loc>https://cheristral.pages.dev/about</loc><priority>0.6</priority></url>
-  <url><loc>https://cheristral.pages.dev/careers</loc><priority>0.7</priority></url>
+  <url><loc>https://cheristral.com/</loc><priority>1.0</priority></url>
+  <url><loc>https://cheristral.com/projects</loc><priority>0.8</priority></url>
+  <url><loc>https://cheristral.com/team</loc><priority>0.6</priority></url>
+  <url><loc>https://cheristral.com/about</loc><priority>0.6</priority></url>
+  <url><loc>https://cheristral.com/careers</loc><priority>0.7</priority></url>
 </urlset>

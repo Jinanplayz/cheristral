@@ -26,9 +26,9 @@ const cv = {
 
   location: 'Dhaka, Bangladesh',
   email: 'ahnafsalequejinan@gmail.com',
-  discord: 'Jinanplayz',
+  discord: 'Discord: Jinanplayz',
   github: 'https://github.com/Jinanplayz',
-  linkedin: '',
+  linkedin: 'https://linkedin.com/in/ahnaf-saleque-jinan-817801374',
 
   // Deliberately empty. Read the note above before filling these in.
   phone: 'Contact Email for phone number',            
