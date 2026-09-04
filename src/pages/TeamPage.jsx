@@ -40,7 +40,7 @@ const TeamPage = () => {
       description: 'Facilitating clear communication between the studio and our audience, ensuring player feedback remains central to our development process.',
     },
     {
-      name: 'Azme Mia',
+      name: 'Takrim',
       position: 'Lead Graphics and Editor',
       description: 'Delivering outstanding visual assets, promotional artwork, and highly polished trailer compositions.',
     },
