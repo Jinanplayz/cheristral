@@ -32,7 +32,7 @@ const cv = {
 
   // Deliberately empty. Read the note above before filling these in.
   phone: 'Contact Email for phone number',            
-  address: 'Contact Email for addresss',          
+  address: 'Contact Email for address',
 
   summary:
     'Lead QA Engineer working across live game projects serving over 1.25 million ' +
@@ -145,7 +145,8 @@ const CeoPage = () => {
   const contacts = [
     (cv.address || cv.location) && { key: 'loc', Icon: MapPin, label: cv.address || cv.location, href: null },
     cv.email && { key: 'mail', Icon: Mail, label: cv.email, href: `mailto:${cv.email}` },
-    cv.phone && { key: 'tel', Icon: Phone, label: cv.phone, href: `tel:${cv.phone.replace(/\s/g, '')}` },
+    // Only a real number becomes a tel: link. Placeholder text stays plain.
+    cv.phone && { key: 'tel', Icon: Phone, label: cv.phone, href: /^\+?[\d\s()-]+$/.test(cv.phone) ? `tel:${cv.phone.replace(/\s/g, '')}` : null },
     cv.discord && { key: 'dc', Icon: MessageSquare, label: cv.discord, href: null },
     cv.github && { key: 'gh', Icon: Github, label: 'GitHub', href: cv.github },
     cv.linkedin && { key: 'li', Icon: Linkedin, label: 'LinkedIn', href: cv.linkedin },

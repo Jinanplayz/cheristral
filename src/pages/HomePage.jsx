@@ -42,21 +42,21 @@ const HomePage = () => {
     {
       id: "upcoming-1",
       title: 'UPCOMING',
-      description: 'A sophisticated psychological horror experience currently in development, seamlessly integrating atmospheric storytelling with intense action mechanics and compelling adventure elements.',
-      downloads: '1K',
+      description: 'A story-based multiplayer fighting game with progressive leveling, skill trees and unique twists.',
+      downloads: '0',
       rating: '5.0',
-      releaseDate: '2026',
-      tags: ['horror', 'psychological', 'action', 'adventure'],
+      releaseDate: '2027-28',
+      tags: ['fighting', 'multiplayer', 'story-based', 'skill trees'],
       image: cards.game01
-    }, 
+    },
     {
       id: "upcoming-2",
       title: 'UPCOMING',
-      description: 'A gripping psychological thriller in active development, combining horror elements with fast-paced action and sophisticated adventure gameplay.',
-      downloads: '1K',
+      description: 'A multiplayer psychological and supernatural horror game in the vein of Phasmophobia and Fears to Fathom.',
+      downloads: '0',
       rating: '5.0',
-      releaseDate: '2026',
-      tags: ['horror', 'psychological', 'thriller', 'action'],
+      releaseDate: '2027-28',
+      tags: ['horror', 'psychological', 'supernatural', 'multiplayer'],
       image: cards.game03
     }
   ];
@@ -64,31 +64,32 @@ const HomePage = () => {
   const teamHighlights = [
     {
       name: 'Abdullah Ibn Mahmud',
-      position: 'Lead Artist and Designer',
-      description: 'Designing interactive mechanics that respect the audience\'s time and environments that foster deep, remarkable engagement.'
+      position: 'Dev and Lead Design',
+      description: 'Developing and designing interactive mechanics that respect the audience\'s time and foster deep, remarkable engagement.'
     },
     {
       name: 'Ahnaf Saleque Jinan',
-      position: 'Lead Engineer and Producer',
-      description: 'Serving as CEO and Lead Producer, directing the studio\'s overarching vision and driving core narrative development with extensive industry expertise.'
+      position: 'Lead Dev and Producer',
+      description: 'Serving as CEO and Lead Producer, directing the studio\'s overarching vision and leading core game development with extensive industry expertise.'
     },
     {
       name: 'Abdullah Al-Nahian',
-      position: 'Lead Environment and Audio',
-      description: 'Crafting distinguished visual experiences and sophisticated audioscapes that elevate immersive environments to an exceptional standard.'
+      position: 'Dev and Lead Config',
+      description: 'Leading configuration and developing sophisticated systems that elevate immersive environments to an exceptional standard.'
     }
   ];
 
+  // A stat shows an animated `value`, or a short `text` phrase in its place.
   const studioStats = [{
     label: "Total Downloads",
-    value: 1,
-    suffix: "K+",
+    value: 0,
+    suffix: "",
     desc: "Across multiple platforms"
   }, {
     label: "Games Shipped",
-    value: 1,
-    suffix: "+",
-    desc: "Recognized interactive titles"
+    value: 0,
+    suffix: "",
+    desc: "First title due mid 2027"
   }, {
     label: "Development Time",
     value: 240,
@@ -96,8 +97,7 @@ const HomePage = () => {
     desc: "Delivering excellence with precision"
   }, {
     label: "Team Members",
-    value: 6,
-    suffix: "+",
+    text: "Actively recruiting!",
     desc: "Exceptional technical professionals"
   }];
 
@@ -124,6 +124,15 @@ const HomePage = () => {
 
             <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
               <m.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="text-center mb-20">
+                <p className="inline-flex items-center gap-3 mb-8 px-5 py-2 rounded-2xl sm:rounded-full border border-primary/40 bg-primary/10 text-xs sm:text-sm font-bold uppercase tracking-wider sm:tracking-widest text-primary">
+                  <span className="h-2 w-2 shrink-0 rounded-full bg-primary animate-pulse" aria-hidden="true" />
+                  {/* Two stacked lines on phones, one line with a divider from sm up. */}
+                  <span className="flex flex-col sm:flex-row sm:gap-2">
+                    <span>Development begins November 2026</span>
+                    <span className="hidden sm:inline" aria-hidden="true">·</span>
+                    <span>First game mid 2027</span>
+                  </span>
+                </p>
                 <h2 className="text-primary text-xl font-bold tracking-[0.2em] mb-4 uppercase">Our Impact</h2>
                 <p className="text-4xl md:text-5xl font-black uppercase">Studio & Project Metrics</p>
               </m.div>
@@ -131,11 +140,15 @@ const HomePage = () => {
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
                 {studioStats.map((stat, index) => (
                   <Link to="/projects" key={index} className="block outline-none focus-visible:ring-2 focus-visible:ring-primary rounded-2xl">
-                    <m.div initial={{ opacity: 0, scale: 0.8 }} whileInView={{ opacity: 1, scale: 1 }} viewport={{ once: true }} transition={{ delay: index * 0.1, duration: 0.5, type: "spring" }} whileHover={{ scale: 1.05, y: -10 }} className="group bg-card/80 backdrop-blur-md border border-border/50 hover:border-primary p-10 rounded-2xl text-center transition-all duration-300 hover:shadow-[0_0_40px_hsl(var(--primary)/0.3)] relative overflow-hidden gpu-accelerated will-change-transform">
+                    <m.div initial={{ opacity: 0, scale: 0.8 }} whileInView={{ opacity: 1, scale: 1 }} viewport={{ once: true }} transition={{ delay: index * 0.1, duration: 0.5, type: "spring" }} whileHover={{ scale: 1.05, y: -10 }} className="group h-full bg-card/80 backdrop-blur-md border border-border/50 hover:border-primary p-10 lg:p-6 xl:p-10 rounded-2xl text-center transition-all duration-300 hover:shadow-[0_0_40px_hsl(var(--primary)/0.3)] relative overflow-hidden gpu-accelerated will-change-transform">
                       <div className="absolute inset-0 bg-gradient-to-b from-primary/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none" />
                       <div className="relative z-10">
-                        <div className="text-6xl md:text-7xl font-black text-foreground group-hover:text-primary transition-colors duration-300 mb-4 font-rajdhani text-glow">
-                          <AnimatedCounter end={stat.value} suffix={stat.suffix} />
+                        {/* The box is always one number tall, so a text stat lines up with the rest.
+                            Sizes step down at lg/xl, where four columns are too narrow for "240H+" at full size. */}
+                        <div className="h-[1em] flex items-center justify-center text-6xl md:text-7xl lg:text-5xl xl:text-6xl min-[1400px]:text-7xl font-black text-foreground group-hover:text-primary transition-colors duration-300 mb-4 font-rajdhani text-glow">
+                          {stat.text
+                            ? <span className="text-3xl/none lg:text-2xl/none xl:text-3xl/none">{stat.text}</span>
+                            : <AnimatedCounter end={stat.value} suffix={stat.suffix} />}
                         </div>
                         <h3 className="text-xl md:text-2xl font-bold uppercase tracking-wider mb-2">{stat.label}</h3>
                         <p className="text-sm font-medium text-muted-foreground uppercase tracking-widest">{stat.desc}</p>

@@ -16,26 +16,26 @@ const GameDetailPage = () => {
   const projectsData = {
     "upcoming-1": {
       title: "UPCOMING",
-      tagline: "In Active Development",
-      description: "A sophisticated psychological horror experience currently in development, seamlessly integrating atmospheric storytelling with intense action mechanics and compelling adventure elements.",
+      tagline: "Coming 2027-28",
+      description: "A story-based multiplayer fighting game with progressive leveling, skill trees and unique twists.",
       coverImage: cards.game01,
       videoUrl: "https://www.youtube.com/embed/dQw4w9WgXcQ", // Safe placeholder
-      tags: ['Horror', 'Psychological', 'Action', 'Adventure'],
+      tags: ['Fighting', 'Multiplayer', 'Story-Based', 'Skill Trees'],
       stats: {
-        downloads: "1K",
+        downloads: "0",
         rating: "5.0/5",
         players: "TBA",
         platforms: "PC, PS5, XSX",
         engine: "Unreal 5",
-        release: "2026",
+        release: "2027-28",
         metacritic: "TBA"
       },
       screenshots: galleries.game01,
       features: [
-        "Advanced psychological horror design",
-        "Atmospheric, tension-driven narrative structure",
-        "High-fidelity environments engineered in Unreal Engine 5",
-        "Sophisticated action and adventure progression"
+        "Story-based multiplayer fighting",
+        "Progressive leveling",
+        "Skill trees",
+        "Unique twists on the genre"
       ],
       requirements: {
         min: { os: "Windows 10 64-bit", cpu: "Core i5-10400 / Ryzen 5 3600", ram: "16 GB", gpu: "RTX 2060 / RX 5600 XT", storage: "100 GB SSD" },
@@ -44,25 +44,25 @@ const GameDetailPage = () => {
     },
     "upcoming-2": {
       title: "UPCOMING",
-      tagline: "In Active Development",
-      description: "A gripping psychological thriller in active development, combining horror elements with fast-paced action and sophisticated adventure gameplay.",
+      tagline: "Coming 2027-28",
+      description: "A multiplayer psychological and supernatural horror game in the vein of Phasmophobia and Fears to Fathom.",
       coverImage: cards.game02,
       videoUrl: "https://www.youtube.com/embed/dQw4w9WgXcQ", // Safe placeholder
-      tags: ['Horror', 'Psychological', 'Thriller', 'Action'],
+      tags: ['Horror', 'Psychological', 'Supernatural', 'Multiplayer'],
       stats: {
-        downloads: "1K",
+        downloads: "0",
         rating: "5.0/5",
         players: "TBA",
         platforms: "PC, PS5, XSX",
         engine: "Unreal 5",
-        release: "2026",
+        release: "2027-28",
         metacritic: "TBA"
       },
       screenshots: galleries.game02,
       features: [
-        "Compelling psychological thriller narrative",
-        "Refined action and sophisticated gameplay mechanics",
-        "Dynamic logic that adapts to player decisions",
+        "Psychological and supernatural horror",
+        "Multiplayer sessions",
+        "Atmospheric, tension-driven design",
         "Exceptional immersive audio design"
       ],
       requirements: {

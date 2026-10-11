@@ -49,6 +49,13 @@ export default function PageMeta({ title, description, image, noIndex = false })
 
     setMeta('property', 'og:url', window.location.href);
 
+    // index.html ships a canonical pointing at the home page. Left alone, every
+    // route tells search engines it is a duplicate of "/" and may go unlisted.
+    const canonical = document.head.querySelector('link[rel="canonical"]');
+    if (canonical) {
+      canonical.setAttribute('href', new URL(window.location.pathname, canonical.href).href);
+    }
+
     // Ask search engines not to list this page. Only meaningful for pages that
     // are unlisted rather than secret: anyone with the URL can still open it.
     if (noIndex) {

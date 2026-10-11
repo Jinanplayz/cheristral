@@ -85,6 +85,9 @@ const Footer = memo(() => {
                 );
               })}
             </div>
+            <p className="mt-5 text-sm font-medium text-card-foreground/50">
+              Our social media pages are not ready yet. Coming soon.
+            </p>
           </div>
         </div>
 

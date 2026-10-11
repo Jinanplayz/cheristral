@@ -17,21 +17,21 @@ const ProjectsPage = () => {
     {
       id: "upcoming-1",
       title: 'UPCOMING',
-      description: 'A sophisticated psychological horror experience currently in development, seamlessly integrating atmospheric storytelling with intense action mechanics and compelling adventure elements.',
-      downloads: '1K',
+      description: 'A story-based multiplayer fighting game with progressive leveling, skill trees and unique twists.',
+      downloads: '0',
       rating: '5.0',
-      releaseDate: '2026',
-      tags: ['horror', 'psychological', 'action', 'adventure'],
+      releaseDate: '2027-28',
+      tags: ['fighting', 'multiplayer', 'story-based', 'skill trees'],
       image: cards.game04
-    }, 
+    },
     {
       id: "upcoming-2",
       title: 'UPCOMING',
-      description: 'A gripping psychological thriller in active development, combining horror elements with fast-paced action and sophisticated adventure gameplay.',
-      downloads: '1K',
+      description: 'A multiplayer psychological and supernatural horror game in the vein of Phasmophobia and Fears to Fathom.',
+      downloads: '0',
       rating: '5.0',
-      releaseDate: '2026',
-      tags: ['horror', 'psychological', 'thriller', 'action'],
+      releaseDate: '2027-28',
+      tags: ['horror', 'psychological', 'supernatural', 'multiplayer'],
       image: cards.game02
     }
   ];

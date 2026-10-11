@@ -1,6 +1,7 @@
 import React, { Suspense, lazy } from 'react';
 import { Route, Routes, BrowserRouter as Router } from 'react-router-dom';
 import ScrollToTop from './components/ScrollToTop.jsx';
+import PageMeta from './components/PageMeta.jsx';
 import { Toaster } from 'sonner';
 import { LazyMotion, domAnimation } from 'framer-motion';
 
@@ -43,6 +44,8 @@ function App() {
           
           <Route path="*" element={
             <div className="min-h-screen flex flex-col items-center justify-center bg-background text-center px-4">
+              {/* Without this the tab keeps the title of whichever page came before. */}
+              <PageMeta title="Page Not Found - Cheristral Studio" noIndex />
               <h1 className="text-7xl font-black text-primary mb-4 text-glow">404</h1>
               <p className="text-2xl font-bold uppercase tracking-wider mb-8">Signal Lost</p>
               <a href="/" className="px-8 py-3 min-h-[44px] flex items-center bg-primary text-white font-bold uppercase tracking-widest rounded shadow-[0_0_20px_hsl(var(--primary)/0.5)] hover:shadow-[0_0_40px_hsl(var(--primary)/0.8)] transition-all gpu-accelerated">

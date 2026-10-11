@@ -14,36 +14,37 @@ const TeamPage = () => {
   const teamMembers = [
     {
       name: 'Abdullah Ibn Mahmud',
-      position: 'Lead Artist and Designer',
-      description: 'Designing interactive mechanics that respect the audience\'s time and environments that foster deep, remarkable engagement.',
+      position: 'Dev and Lead Design',
+      description: 'Developing and designing interactive mechanics that respect the audience\'s time and foster deep, remarkable engagement.',
     },
     {
       name: 'Ahnaf Saleque Jinan',
-      position: 'Lead Engineer and Producer',
+      position: 'Lead Dev and Producer',
       // Makes the name clickable, linking through to the unlisted CV at /ceo.
       profileLink: '/ceo',
-      description: 'Serving as CEO and Lead Producer, directing the studio\'s overarching vision and driving core narrative development with extensive industry expertise.',
+      description: 'Serving as CEO and Lead Producer, directing the studio\'s overarching vision and leading core game development with extensive industry expertise.',
     },
     {
       name: 'Abdullah Al-Nahian',
-      position: 'Lead Environment and Audio',
-      description: 'Crafting distinguished visual experiences and sophisticated audioscapes that elevate immersive environments to an exceptional standard.',
+      position: 'Dev and Lead Config',
+      description: 'Leading configuration and developing sophisticated systems that elevate immersive environments to an exceptional standard.',
     },
-    {
-      name: 'Al-Hasin Mahtab',
-      position: 'Lead QA and Playtester',
-      description: 'Ensuring exceptional product stability and refining the end-user experience through comprehensive quality assurance.',
-    },
-    {
-      name: 'MD. Arashuzzaman Khan',
-      position: 'Lead Support and Public Relations',
-      description: 'Facilitating clear communication between the studio and our audience, ensuring player feedback remains central to our development process.',
-    },
-    {
-      name: 'Takrim',
-      position: 'Lead Graphics and Editor',
-      description: 'Delivering outstanding visual assets, promotional artwork, and highly polished trailer compositions.',
-    },
+    // Hidden for now. Uncomment a block to bring that member back onto the page.
+    // {
+    //   name: 'Al-Hasin Mahtab',
+    //   position: 'Lead QA and Playtester',
+    //   description: 'Ensuring exceptional product stability and refining the end-user experience through comprehensive quality assurance.',
+    // },
+    // {
+    //   name: 'MD. Arashuzzaman Khan',
+    //   position: 'Lead Support and Public Relations',
+    //   description: 'Facilitating clear communication between the studio and our audience, ensuring player feedback remains central to our development process.',
+    // },
+    // {
+    //   name: 'Takrim',
+    //   position: 'Lead Graphics and Editor',
+    //   description: 'Delivering outstanding visual assets, promotional artwork, and highly polished trailer compositions.',
+    // },
   ];
 
   return (
@@ -78,7 +79,7 @@ const TeamPage = () => {
 
               <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-12 max-w-7xl mx-auto">
                 <Suspense fallback={
-                  Array.from({ length: 6 }).map((_, i) => (
+                  Array.from({ length: teamMembers.length }).map((_, i) => (
                     <Skeleton key={i} className="h-[350px] w-full rounded-2xl" />
                   ))
                 }>

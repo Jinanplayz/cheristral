@@ -2,6 +2,7 @@
 import React, { Suspense, lazy } from 'react';
 import PageMeta from '@/components/PageMeta.jsx';
 import { m } from 'framer-motion';
+import { Info } from 'lucide-react';
 import Header from '@/components/Header.jsx';
 import Footer from '@/components/Footer.jsx';
 import HeroSection from '@/components/HeroSection.jsx';
@@ -89,6 +90,12 @@ const CareersPage = () => {
                 <h2 className="text-4xl md:text-5xl font-black uppercase mb-6 text-glow">Open Positions</h2>
                 <p className="text-lg text-foreground/70 max-w-3xl mx-auto font-medium">
                   We foster talent and provide substantial opportunities for professional growth. We invite candidates of all experience levels to explore our current openings.
+                </p>
+                <p className="mt-8 max-w-3xl mx-auto flex items-start gap-3 text-left rounded-xl border border-primary/40 bg-primary/10 px-5 py-4 text-base font-medium text-foreground/90">
+                  <Info className="h-5 w-5 text-primary shrink-0 mt-0.5" aria-hidden="true" />
+                  <span>
+                    We are not hiring externally at the moment. External hiring begins in 2027. This page only lists the roles we need now or may need soon.
+                  </span>
                 </p>
               </m.div>
 
