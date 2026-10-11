@@ -25,7 +25,7 @@ const TeamPage = () => {
       description: 'Serving as CEO and Lead Producer, directing the studio\'s overarching vision and leading core game development with extensive industry expertise.',
     },
     {
-      name: 'Abdullah Al-Nahian',
+      name: 'Abdullah Al Nahian',
       position: 'Dev and Lead Config',
       description: 'Leading configuration and developing sophisticated systems that elevate immersive environments to an exceptional standard.',
     },
