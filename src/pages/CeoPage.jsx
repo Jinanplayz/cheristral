@@ -56,6 +56,13 @@ const cv = {
         'Contributing to player events, collaborating with moderation managers and staff teams on safety principles for younger audiences while respecting their privacy. Balancing game economies and expanding fair-play competition to increase retention by 80%.',
       ],
     },
+    {
+      role: 'Operations Co-Director',
+      org: 'LingHacks (linghacks.tech), a Hack+ non-profit',
+      place: '',
+      period: '',
+      points: [],
+    },
   ],
 
   projects: [
